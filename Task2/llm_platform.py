@@ -94,8 +94,11 @@ class LLMPlatform:
             generation_config = {**self.config, **kwargs}
             
             # Generate response
+            # 防御性清理：避免外部传入重复前缀
+            clean_prompt = self._sanitize_prompt(prompt)
+
             response = self.llm(
-                prompt,
+                clean_prompt,
                 max_tokens=generation_config.get("max_tokens", 512),
                 temperature=generation_config.get("temperature", 0.7),
                 top_p=generation_config.get("top_p", 0.9),
@@ -123,8 +126,9 @@ class LLMPlatform:
 
         generation_config = {**self.config, **kwargs}
         try:
+            clean_prompt = self._sanitize_prompt(prompt)
             stream = self.llm(
-                prompt,
+                clean_prompt,
                 max_tokens=generation_config.get("max_tokens", 512),
                 temperature=generation_config.get("temperature", 0.7),
                 top_p=generation_config.get("top_p", 0.9),
@@ -198,8 +202,15 @@ class LLMPlatform:
         """Build conversation context from history"""
         if not self.conversation_history:
             return ""
-        
-        context = "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n"
+        # NOTE:
+        # llama-cpp >= (recent versions) will automatically prepend the special BOS / <|begin_of_text|>
+        # token for many Llama 3 style models (unless add_bos=False and model embedding differs).
+        # We previously inserted "<|begin_of_text|>" manually which triggered the warning:
+        #   RuntimeWarning: Detected duplicate leading "<|begin_of_text|>"
+        # To avoid degrading response quality, we remove the manual prefix here.
+        # If a future model requires an explicit prefix, re-introduce conditionally.
+
+        context = "<|start_header_id|>system<|end_header_id|>\n\n"
         context += "You are a helpful AI assistant. Provide clear, concise, and helpful responses.\n"
         context += "<|eot_id|>\n\n"
         
@@ -215,6 +226,18 @@ class LLMPlatform:
         
         context += "<|start_header_id|>assistant<|end_header_id|>\n\n"
         return context
+
+    def _sanitize_prompt(self, prompt: str) -> str:
+        """Remove duplicated leading <|begin_of_text|> tokens if user / builder already inserted.
+
+        Some llama.cpp builds auto-prepend BOS; if user context also starts with it, we strip extras.
+        """
+        # 只去除最前端重复堆叠
+        marker = "<|begin_of_text|>"
+        # 连续多次出现时只保留一次（也可以直接全部去掉，视需要而定）
+        while prompt.startswith(marker + marker):
+            prompt = prompt[len(marker):]
+        return prompt
     
     def clear_history(self):
         """Clear conversation history"""
