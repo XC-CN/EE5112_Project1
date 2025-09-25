@@ -355,6 +355,130 @@ This comprehensive understanding of different LLM architectures provides the fou
 % 本地LLM平台实现
 
 
+This subsection details the design and implementation of our local Large Language Model (LLM) platform developed in Task 2. The platform enables fully offline, multi-turn dialogue with an optimized quantized Llama 3.2 3B Instruct model using the \texttt{llama-cpp-python} backend, supporting streaming token-level generation, context management, and persistent conversation storage.
+% 本小节介绍任务2中本地LLM平台的设计与实现。平台基于 \texttt{llama-cpp-python} 运行量化的 Llama 3.2 3B Instruct 模型，支持完全离线、多轮对话、逐 token 流式输出、上下文管理以及对话持久化存储。
+
+\subsubsection*{System Architecture}
+% 系统架构
+
+The platform is organized into two core layers: (1) \textbf{LLMPlatform} (model runtime + generation control) and (2) \textbf{DialogueSystem} (session orchestration + persistence). 
+% 平台包含两个核心层：（1）\textbf{LLMPlatform}（模型运行时与生成控制），（2）\textbf{DialogueSystem}（会话编排与持久化）。
+
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Model Runtime}: Wraps the quantized GGUF model (\texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf}) providing unified load / generate / stream interfaces.  
+    % 模型运行时：封装量化GGUF模型，提供统一加载/生成/流式接口。
+    \item \textbf{Generation Engine}: Applies sampling controls (temperature, top-p, top-k, repeat penalty) and stop-sequence management for safe termination.  
+    % 生成引擎：应用采样控制与停止序列管理。
+    \item \textbf{Context Builder}: Dynamically composes an instruction-style prompt with system, user, assistant roles; trims history (sliding window) to remain within \texttt{n\_ctx}.  
+    % 上下文构建器：动态组装 system/user/assistant 角色提示，采用滑动窗口裁剪历史。
+    \item \textbf{Streaming Layer}: Exposes a Python generator yielding incremental tokens for real-time UX.  
+    % 流式层：通过生成器逐 token 产出，实现实时交互体验。
+    \item \textbf{Persistence Module}: Serializes conversations to JSON with timestamps and metadata (conversation ID).  
+    % 持久化模块：将带时间戳的对话序列化为JSON。
+    \item \textbf{Configuration Loader}: Merges external \texttt{config.json} with safe defaults; separates model, generation, dialogue, and hardware domains.  
+    % 配置加载器：合并外部配置与默认值，分离模型/生成/对话/硬件四类域。
+\end{itemize}
+
+\subsubsection*{Configuration and Parameterization}
+% 配置与参数化
+
+Four configuration groups enable reproducibility and hardware-aware tuning (excerpt from \texttt{config.json}).
+% 四类配置支持可复现与硬件感知调优（摘自 \texttt{config.json}）。
+
+\begin{table}[H]
+\centering
+\caption{Configuration Groups and Key Parameters}
+% 配置分组与关键参数
+\label{tab:config_params}
+\begin{tabular}{|l|p{0.26\linewidth}|p{0.5\linewidth}|}
+\hline
+	\textbf{Group} & \textbf{Key Fields} & \textbf{Purpose} \\
+% 分组 & 关键字段 & 目的
+\hline
+Model & model\_path, n\_gpu\_layers, n\_ctx, n\_threads & Load quantized model; balance context length vs memory footprint. \\
+Generation & temperature, top\_p, top\_k, repeat\_penalty, max\_tokens & Control diversity, prevent repetition, limit response budget. \\
+Dialogue & max\_history, system\_prompt, streaming, save\_conversations & Maintain conversational coherence and UX features. \\
+Hardware & gpu\_enabled, max\_gpu\_layers, memory\_fraction & Allocate GPU layers and avoid memory oversubscription. \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Inference Workflow}
+% 推理工作流
+
+\begin{enumerate}[leftmargin=1.2em]
+    \item \textbf{Initialization}: Validate model presence; instantiate \texttt{Llama} with GPU offloading (\texttt{n\_gpu\_layers=35}).
+    % 初始化：验证模型文件，创建 Llama 实例并执行 GPU 分层卸载。
+    \item \textbf{Input Capture}: User utterance appended to in-memory history (role-tagged JSON objects).
+    % 输入捕获：用户消息追加到内存历史。
+    \item \textbf{Context Assembly}: Select last $k$ exchanges (<=6) + system prompt into structured token template.
+    % 上下文组装：取最近若干轮 + system prompt 组成结构化模板。
+    \item \textbf{Generation}: Call synchronous or streaming API; apply sampling constraints and stop tokens.
+    % 生成：同步或流式调用，应用采样与停止序列。
+    \item \textbf{Streaming (Optional)}: UI prints incremental tokens; latency perceived as reduced.
+    % 流式（可选）：界面逐 token 输出，降低感知延迟。
+    \item \textbf{Post-processing}: Trim whitespace; append assistant reply to history.
+    % 后处理：清理并写回历史。
+    \item \textbf{Persistence}: If enabled, serialize pair into conversation JSON (timestamped). 
+    % 持久化：若开启，序列化写入 JSON。
+\end{enumerate}
+
+\subsubsection*{Streaming Mechanism}
+% 流式机制
+
+The streaming interface wraps the backend iterator, yielding \emph{delta} fragments; the UI layer concatenates them to form the final assistant turn. This improves responsiveness for longer generations and mirrors modern production chat UX. A termination check monitors \texttt{finish\_reason} in the final chunk.
+% 流式接口封装底层迭代器，逐步输出增量文本分片，界面拼接形成完整回复；提升长回答交互响应性，并监测最后块的 \texttt{finish\_reason} 实现有序终止。
+
+\subsubsection*{Data Persistence and Reproducibility}
+% 数据持久化与可复现性
+
+Conversations are stored under \texttt{conversations/} using ISO8601 timestamps for auditing. Each file aggregates ordered message tuples preserving role, content, and creation time, enabling later evaluation or fine-tuning dataset curation.
+% 对话以 ISO8601 时间戳文件名保存在 \texttt{conversations/}，保留角色/内容/时间顺序，便于评估与后续数据蒸馏或微调语料整理。
+
+\subsubsection*{Performance Considerations}
+% 性能考量
+
+We adopt Q4\_K\_M quantization to balance memory (\(~3\,GB GPU usage\)) and quality for a consumer-grade 16GB GPU. Streaming reduces perceived latency; selective history truncation prevents context overflow. CPU threads (\texttt{n\_threads=8}) parallelize token probability computation for non-offloaded layers.
+% 采用 Q4\_K\_M 量化在 16GB GPU 上平衡显存（约3GB）与质量；流式降低感知延迟；历史截断避免上下文溢出；CPU 多线程加速未下放层计算。
+
+\subsubsection*{Reliability and Error Handling}
+% 可靠性与错误处理
+
+Model load failures (missing file / incompatible quantization) are trapped with fallback messaging. Generation exceptions during streaming yield an inline error token without aborting the application. Conversation save errors are gracefully warned (non-fatal).
+% 模型加载失败（缺文件/量化不兼容）被捕获；流式生成异常以内联错误标记返回；保存失败仅告警而不终止主循环。
+
+\subsubsection*{Strengths and Limitations}
+% 优势与局限
+
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Strengths}: Offline privacy; modular layering; streaming UX; clean JSON audit trail; hardware-aware configuration.
+    % 优势：离线隐私；模块分层；流式体验；JSON 审计轨迹；硬件感知配置。
+    \item \textbf{Limitations}: Single-model runtime (no dynamic model pool); absence of advanced memory (vector retrieval); limited evaluation hooks in current phase.
+    % 局限：单模型运行；缺向量检索记忆；当前阶段缺少评估挂钩。
+    \item \textbf{Future Work}: Add retrieval-augmented generation, multi-model routing, automated quality metrics, and GUI integration.
+    % 未来工作：加入检索增强、多模型路由、自动化质量指标与 GUI 集成。
+\end{itemize}
+
+\subsubsection*{User Interaction Example}
+% 用户交互示例
+
+Figure~\ref{fig:llama_chat_screenshot} shows a real dialogue example captured from the streaming session.
+% 图~\ref{fig:llama_chat_screenshot} 展示一次真实流式对话示例。
+
+\begin{figure}[H]
+    \centering
+    % 注意：若编译器无法处理中文文件名，可将图片重命名为 llama_chat.png 并更新路径。
+    \includegraphics[width=1\linewidth]{Figures/llama对话.png}
+    \caption{Example streaming dialogue with local Llama 3.2 3B model.}
+    % 使用本地 Llama 3.2 3B 模型的流式对话示例
+    \label{fig:llama_chat_screenshot}
+\end{figure}
+
+Overall, the implementation delivers a privacy-preserving, extensible inference substrate suitable for subsequent integration with higher-level dialogue management and evaluation modules in later tasks.
+% 总体而言，该实现提供一个隐私友好、可扩展的推理底座，为后续任务中的高层对话管理与评估模块集成奠定基础。
+
+
+
 
 \section{Task 3: Dialogue System Development}
 % 任务3：对话系统开发

@@ -1,0 +1,26 @@
+{
+  "conversation_id": "20250925_182350",
+  "start_time": "2025-09-25T19:52:49.206670",
+  "messages": [
+    {
+      "role": "user",
+      "content": "你好",
+      "timestamp": "2025-09-25T19:52:49.206670"
+    },
+    {
+      "role": "assistant",
+      "content": "hello! 😊 How can I assist you today?",
+      "timestamp": "2025-09-25T19:52:49.206670"
+    },
+    {
+      "role": "user",
+      "content": "可以说中文吗",
+      "timestamp": "2025-09-25T19:52:58.125292"
+    },
+    {
+      "role": "assistant",
+      "content": "可以！中文可以交流！您需要什么帮助吗？",
+      "timestamp": "2025-09-25T19:52:58.125292"
+    }
+  ]
+}
