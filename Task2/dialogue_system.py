@@ -72,28 +72,14 @@ class DialogueSystem:
             # Generate conversation ID
             self.conversation_id = datetime.now().strftime("%Y%m%d_%H%M%S")
             
-            # Prepare model configuration, merging hardware preferences
-            model_cfg = dict(self.config.get("model_config", {}))
-            hardware_cfg = self.config.get("hardware_config", {})
-
-            if hardware_cfg.get("gpu_enabled"):
-                max_layers = hardware_cfg.get("max_gpu_layers", -1)
-                if isinstance(max_layers, str):
-                    try:
-                        max_layers = int(max_layers)
-                    except ValueError:
-                        max_layers = -1
-                model_cfg["n_gpu_layers"] = max_layers if max_layers != 0 else -1
-            else:
-                model_cfg["n_gpu_layers"] = 0
-
-            model_path = model_cfg.get("model_path")
+            # Initialize LLM platform
+            model_path = self.config["model_config"]["model_path"]
             if not os.path.exists(model_path):
                 print(f"❌ Model not found: {model_path}")
                 print("Please run 'python download_model.py' to download the model first.")
                 return False
             
-            self.platform = LLMPlatform(model_path, model_cfg)
+            self.platform = LLMPlatform(model_path, self.config["model_config"])
             
             if not self.platform.load_model():
                 return False
