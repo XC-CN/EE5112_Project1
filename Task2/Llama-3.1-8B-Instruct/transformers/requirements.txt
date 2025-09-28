@@ -1,0 +1,6 @@
+﻿# Python dependencies for the Transformers dialogue runner
+transformers>=4.44.0
+torch>=2.2.0
+huggingface-hub>=0.24.0
+sentencepiece>=0.1.99
+numpy>=1.24.0

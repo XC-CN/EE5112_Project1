@@ -16,6 +16,6 @@
         "system_prompt": "You are Llama 3.1 8B deployed for human-robot interaction research. Provide precise, safe, and actionable guidance for robotics tasks.",
         "max_history": 6,
         "save_conversations": true,
-        "conversation_dir": "conversations_vllm"
+        "conversation_dir": "conversations_transformers"
     }
 }
