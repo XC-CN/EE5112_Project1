@@ -154,6 +154,47 @@ INPUT D:\Program Files\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
 INPUT D:\Program Files\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
 INPUT D:\Program Files\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
 INPUT D:\Program Files\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\biblatex.sty
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\biblatex.sty
+INPUT D:\Program Files\MiKTeX\tex\latex\logreq\logreq.sty
+INPUT D:\Program Files\MiKTeX\tex\latex\logreq\logreq.sty
+INPUT D:\Program Files\MiKTeX\tex\latex\logreq\logreq.def
+INPUT D:\Program Files\MiKTeX\tex\latex\logreq\logreq.def
+INPUT D:\Program Files\MiKTeX\tex\latex\logreq\logreq.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\blx-dm.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\blx-dm.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\blx-dm.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\blx-compat.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\blx-compat.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\blx-compat.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\biblatex.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\biblatex.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\biblatex.def
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex-ieee\ieee.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex-ieee\ieee.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex-ieee\ieee.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\numeric-comp.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\numeric-comp.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\numeric-comp.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\numeric.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\numeric.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\numeric.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\standard.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\standard.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\bbx\standard.bbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\lbx\english.lbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\lbx\english.lbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex-ieee\ieee.cbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex-ieee\ieee.cbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex-ieee\ieee.cbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\cbx\numeric-verb.cbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\cbx\numeric-verb.cbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\cbx\numeric-verb.cbx
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\biblatex.cfg
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\biblatex.cfg
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\biblatex.cfg
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\blx-case-expl3.sty
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\blx-case-expl3.sty
 INPUT D:\Program Files\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT D:\Program Files\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT D:\Program Files\MiKTeX\tex\latex\float\float.sty
@@ -204,6 +245,13 @@ OUTPUT 5112Report_Group7.pdf
 INPUT .\5112Report_Group7.out
 INPUT .\5112Report_Group7.out
 OUTPUT 5112Report_Group7.out
+INPUT D:\Program Files\MiKTeX\tex\latex\biblatex\lbx\english.lbx
+OUTPUT 5112Report_Group7.bcf
+INPUT 5112Report_Group7.bbl
+INPUT .\5112Report_Group7.bbl
+INPUT .\5112Report_Group7.bbl
+INPUT .\5112Report_Group7.bbl
+INPUT 5112Report_Group7.bbl
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Regular-tlf-ot1.tfm
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1.tfm
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Regular-tlf-ot1.tfm
@@ -308,18 +356,18 @@ INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\txbmiaX.tfm
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1r.tfm
 OUTPUT 5112Report_Group7.toc
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1.tfm
+INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntx-Bold-tlf-ot1.vf
+INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\txbmiaX.tfm
+INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1r.tfm
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ts1ntxtlf.fd
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ts1ntxtlf.fd
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ts1ntxtlf.fd
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\tex-gyre\ts1-qtmr.tfm
+INPUT D:\Program Files\MiKTeX\fonts\enc\dvips\tex-gyre\q-ts1.enc
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ot1ntxtt.fd
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ot1ntxtt.fd
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ot1ntxtt.fd
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\txfonts\txtt.tfm
-INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntx-Bold-tlf-ot1.vf
-INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\txbmiaX.tfm
-INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1r.tfm
-INPUT D:\Program Files\MiKTeX\fonts\enc\dvips\tex-gyre\q-ts1.enc
 INPUT .\Figures\llama对话.png
 INPUT .\Figures\llama对话.png
 INPUT .\Figures\llama对话.png
@@ -343,6 +391,8 @@ INPUT .\Figures\llamaGPU.png
 INPUT 5112Report_Group7.aux
 INPUT .\5112Report_Group7.out
 INPUT .\5112Report_Group7.out
+INPUT 5112Report_Group7.run.xml
+OUTPUT 5112Report_Group7.run.xml
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\newtx\NewTXMI.pfb
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\newtx\NewTXMI.pfb
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\tex-gyre\qtmr.pfb

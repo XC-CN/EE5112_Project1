@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.9.25)  28 SEP 2025 17:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.9.25)  28 SEP 2025 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -463,17 +463,247 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip56
-) (D:\Program Files\MiKTeX\tex/latex/enumitem\enumitem.sty
+) (D:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
+Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
+ (D:\Program Files\MiKTeX\tex/latex/logreq\logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count321
+ (D:\Program Files\MiKTeX\tex/latex/logreq\logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+\c@tabx@nest=\count322
+\c@listtotal=\count323
+\c@listcount=\count324
+\c@liststart=\count325
+\c@liststop=\count326
+\c@citecount=\count327
+\c@citetotal=\count328
+\c@multicitecount=\count329
+\c@multicitetotal=\count330
+\c@instcount=\count331
+\c@maxnames=\count332
+\c@minnames=\count333
+\c@maxitems=\count334
+\c@minitems=\count335
+\c@citecounter=\count336
+\c@maxcitecounter=\count337
+\c@savedcitecounter=\count338
+\c@uniquelist=\count339
+\c@uniquename=\count340
+\c@refsection=\count341
+\c@refsegment=\count342
+\c@maxextratitle=\count343
+\c@maxextratitleyear=\count344
+\c@maxextraname=\count345
+\c@maxextradate=\count346
+\c@maxextraalpha=\count347
+\c@abbrvpenalty=\count348
+\c@highnamepenalty=\count349
+\c@lownamepenalty=\count350
+\c@maxparens=\count351
+\c@parenlevel=\count352
+\blx@tempcnta=\count353
+\blx@tempcntb=\count354
+\blx@tempcntc=\count355
+\c@blx@maxsection=\count356
+\blx@maxsegment@0=\count357
+\blx@notetype=\count358
+\blx@parenlevel@text=\count359
+\blx@parenlevel@foot=\count360
+\blx@sectionciteorder@0=\count361
+\blx@sectionciteorderinternal@0=\count362
+\blx@entrysetcounter=\count363
+\blx@biblioinstance=\count364
+\labelnumberwidth=\skip57
+\labelalphawidth=\skip58
+\biblabelsep=\skip59
+\bibitemsep=\skip60
+\bibnamesep=\skip61
+\bibinitsep=\skip62
+\bibparsep=\skip63
+\bibhang=\skip64
+\blx@bcfin=\read3
+\blx@bcfout=\write3
+\blx@langwohyphens=\language79
+\c@mincomprange=\count365
+\c@maxcomprange=\count366
+\c@mincompwidth=\count367
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex\blx-dm.def
+File: blx-dm.def 2024/03/21 v3.20 biblatex datamodel (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'ieee.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count368
+\c@savedafterword=\count369
+\c@annotator=\count370
+\c@savedannotator=\count371
+\c@author=\count372
+\c@savedauthor=\count373
+\c@bookauthor=\count374
+\c@savedbookauthor=\count375
+\c@commentator=\count376
+\c@savedcommentator=\count377
+\c@editor=\count378
+\c@savededitor=\count379
+\c@editora=\count380
+\c@savededitora=\count381
+\c@editorb=\count382
+\c@savededitorb=\count383
+\c@editorc=\count384
+\c@savededitorc=\count385
+\c@foreword=\count386
+\c@savedforeword=\count387
+\c@holder=\count388
+\c@savedholder=\count389
+\c@introduction=\count390
+\c@savedintroduction=\count391
+\c@namea=\count392
+\c@savednamea=\count393
+\c@nameb=\count394
+\c@savednameb=\count395
+\c@namec=\count396
+\c@savednamec=\count397
+\c@translator=\count398
+\c@savedtranslator=\count399
+\c@shortauthor=\count400
+\c@savedshortauthor=\count401
+\c@shorteditor=\count402
+\c@savedshorteditor=\count403
+\c@labelname=\count404
+\c@savedlabelname=\count405
+\c@institution=\count406
+\c@savedinstitution=\count407
+\c@lista=\count408
+\c@savedlista=\count409
+\c@listb=\count410
+\c@savedlistb=\count411
+\c@listc=\count412
+\c@savedlistc=\count413
+\c@listd=\count414
+\c@savedlistd=\count415
+\c@liste=\count416
+\c@savedliste=\count417
+\c@listf=\count418
+\c@savedlistf=\count419
+\c@location=\count420
+\c@savedlocation=\count421
+\c@organization=\count422
+\c@savedorganization=\count423
+\c@origlocation=\count424
+\c@savedoriglocation=\count425
+\c@origpublisher=\count426
+\c@savedorigpublisher=\count427
+\c@publisher=\count428
+\c@savedpublisher=\count429
+\c@language=\count430
+\c@savedlanguage=\count431
+\c@origlanguage=\count432
+\c@savedoriglanguage=\count433
+\c@pageref=\count434
+\c@savedpageref=\count435
+\shorthandwidth=\skip65
+\shortjournalwidth=\skip66
+\shortserieswidth=\skip67
+\shorttitlewidth=\skip68
+\shortauthorwidth=\skip69
+\shorteditorwidth=\skip70
+\locallabelnumberwidth=\skip71
+\locallabelalphawidth=\skip72
+\localshorthandwidth=\skip73
+\localshortjournalwidth=\skip74
+\localshortserieswidth=\skip75
+\localshorttitlewidth=\skip76
+\localshortauthorwidth=\skip77
+\localshorteditorwidth=\skip78
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex\blx-compat.def
+File: blx-compat.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.def
+File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
+\c@textcitecount=\count436
+\c@textcitetotal=\count437
+\c@textcitemaxnames=\count438
+\c@biburlbigbreakpenalty=\count439
+\c@biburlbreakpenalty=\count440
+\c@biburlnumpenalty=\count441
+\c@biburlucpenalty=\count442
+\c@biburllcpenalty=\count443
+\biburlbigskip=\muskip19
+\biburlnumskip=\muskip20
+\biburlucskip=\muskip21
+\biburllcskip=\muskip22
+\c@smartand=\count444
+)
+Package biblatex Info: Trying to load bibliography style 'ieee'...
+Package biblatex Info: ... file 'ieee.bbx' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+File: ieee.bbx 2025-08-01 v1.4f biblatex bibliography style
+Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.bbx' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric-comp.bbx
+File: numeric-comp.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
+File: numeric.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count445
+\c@bbx:relatedtotal=\count446
+))))
+Package biblatex Info: Trying to load citation style 'ieee'...
+Package biblatex Info: ... file 'ieee.cbx' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+File: ieee.cbx 2025-08-01 v1.4f biblatex citation style
+Package biblatex Info: Trying to load citation style 'numeric-verb'...
+Package biblatex Info: ... file 'numeric-verb.cbx' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex/cbx\numeric-verb.cbx
+File: numeric-verb.cbx 2024/03/21 v3.20 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcites'.
+))
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.cfg
+File: biblatex.cfg 
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             2025-03-26 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty
+Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
+)) (D:\Program Files\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
-\labelindent=\skip57
+\labelindent=\skip79
 \enit@outerparindent=\dimen191
 \enit@toks=\toks30
 \enit@inbox=\box65
-\enit@count@id=\count321
-\enitdp@description=\count322
+\enit@count@id=\count447
+\enitdp@description=\count448
 ) (D:\Program Files\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count323
+\c@float@type=\count449
 \float@exts=\toks31
 \float@box=\box66
 \@float@everytoks=\toks32
@@ -494,64 +724,66 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen199
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count324
-\c@continuedfloat=\count325
+\c@caption@flags=\count450
+\c@continuedfloat=\count451
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 )
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count326
+\c@subfigure=\count452
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count327
+\c@subtable=\count453
 )
-LaTeX Font Info:    Trying to load font information for OT1+ntxtlf on input line 45.
+LaTeX Font Info:    Trying to load font information for OT1+ntxtlf on input line 44.
  (D:\Program Files\MiKTeX\tex/latex/newtx\ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2021/05/24 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 45.
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 45.
+(Font)              scaled to size 12.0pt on input line 44.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 44.
+\@quotelevel=\count454
+\@quotereset=\count455
  (5112Report_Group7.aux)
 \openout1 = `5112Report_Group7.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 45.
-LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 45.
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 44.
+LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 44.
  (D:\Program Files\MiKTeX\tex/latex/newtx\omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 45.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 45.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 44.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 44.
  (D:\Program Files\MiKTeX\tex/latex/newtx\untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 45.
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 45.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 44.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 44.
  (D:\Program Files\MiKTeX\tex/latex/newtx\lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 45.
-LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 45.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 44.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 44.
  (D:\Program Files\MiKTeX\tex/latex/newtx\lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -589,16 +821,16 @@ LaTeX Font Info:    ... okay on input line 45.
 
 (D:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count328
+\scratchcounter=\count456
 \scratchdimen=\dimen256
 \scratchbox=\box68
-\nofMPsegments=\count329
-\nofMParguments=\count330
+\nofMPsegments=\count457
+\nofMParguments=\count458
 \everyMPshowfont=\toks33
-\MPscratchCnt=\count331
+\MPscratchCnt=\count459
 \MPscratchDim=\dimen257
-\MPnumerator=\count332
-\makeMPintoPDFobject=\count333
+\MPnumerator=\count460
+\makeMPintoPDFobject=\count461
 \everyMPtoPDFconversion=\toks34
 ) (D:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -606,108 +838,123 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (D:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Command `\dddot' is already robust on input line 45.
-LaTeX Info: Command `\ddddot' is already robust on input line 45.
-\c@mv@tabular=\count334
-\c@mv@boldtabular=\count335
+LaTeX Info: Command `\dddot' is already robust on input line 44.
+LaTeX Info: Command `\ddddot' is already robust on input line 44.
+\c@mv@tabular=\count462
+\c@mv@boldtabular=\count463
  (D:\Program Files\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 45.
-Package hyperref Info: Link coloring OFF on input line 45.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 44.
+Package hyperref Info: Link coloring OFF on input line 44.
  (5112Report_Group7.out) (5112Report_Group7.out)
-\@outlinefile=\write3
-\openout3 = `5112Report_Group7.out'.
+\@outlinefile=\write4
+\openout4 = `5112Report_Group7.out'.
 
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+ (D:\Program Files\MiKTeX\tex/latex/biblatex/lbx\english.lbx
+File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout3 = `5112Report_Group7.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file '5112Report_Group7.bbl' found.
+ (5112Report_Group7.bbl)
+Package biblatex Info: Reference section=0 on input line 44.
+Package biblatex Info: Reference segment=0 on input line 44.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 20.74pt on input line 50.
+(Font)              scaled to size 20.74pt on input line 49.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 20.74pt on input line 50.
+(Font)              scaled to size 20.74pt on input line 49.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 50.
-LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
+LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 49.
  (D:\Program Files\MiKTeX\tex/latex/newtx\ot1minntx.fd
 File: ot1minntx.fd 2023/09/09 v1.1 font definition file for OT1/minntx
 )
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 14.4pt on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 10.5pt on input line 50.
+(Font)              scaled to size 10.5pt on input line 49.
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 7.9pt on input line 50.
+(Font)              scaled to size 7.9pt on input line 49.
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 14.4pt on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 10.5pt on input line 50.
+(Font)              scaled to size 10.5pt on input line 49.
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 7.9pt on input line 50.
+(Font)              scaled to size 7.9pt on input line 49.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 14.4pt on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 10.5pt on input line 50.
+(Font)              scaled to size 10.5pt on input line 49.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 7.9pt on input line 50.
+(Font)              scaled to size 7.9pt on input line 49.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 14.4pt on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 10.5pt on input line 50.
+(Font)              scaled to size 10.5pt on input line 49.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 7.9pt on input line 50.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
+(Font)              scaled to size 7.9pt on input line 49.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 49.
  (D:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 49.
  (D:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 50.
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 49.
  (D:\Program Files\MiKTeX\tex/latex/newtx\untxmia.fd
 File: untxmia.fd 2024/04/09 Fontinst v1.933 font definitions for U/ntxmia.
 )
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 14.4pt on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 10.5pt on input line 50.
+(Font)              scaled to size 10.5pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 7.9pt on input line 50.
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 50.
+(Font)              scaled to size 7.9pt on input line 49.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 49.
  (D:\Program Files\MiKTeX\tex/latex/newtx\untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 14.4pt on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 10.5pt on input line 50.
+(Font)              scaled to size 10.5pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 7.9pt on input line 50.
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 50.
+(Font)              scaled to size 7.9pt on input line 49.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 49.
  (D:\Program Files\MiKTeX\tex/latex/newtx\untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 14.4pt on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 10.5pt on input line 50.
+(Font)              scaled to size 10.5pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 7.9pt on input line 50.
+(Font)              scaled to size 7.9pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 14.4pt on input line 50.
+(Font)              scaled to size 14.4pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 10.5pt on input line 50.
+(Font)              scaled to size 10.5pt on input line 49.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 7.9pt on input line 50.
+(Font)              scaled to size 7.9pt on input line 49.
 
 
 [1
 
 {C:/Users/XC/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{D:/Program Files/MiKTeX/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 17.28pt on input line 57.
+(Font)              scaled to size 17.28pt on input line 56.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 17.28pt on input line 57.
+(Font)              scaled to size 17.28pt on input line 56.
  (5112Report_Group7.toc
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 (Font)              scaled to size 12.0pt on input line 1.
@@ -762,139 +1009,130 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 
 
 [2])
-\tf@toc=\write4
-\openout4 = `5112Report_Group7.toc'.
+\tf@toc=\write5
+\openout5 = `5112Report_Group7.toc'.
 
 
 
 [3]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 86.
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 123.
+(Font)              scaled to size 14.4pt on input line 85.
+
+
+[4]
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 133.
  (D:\Program Files\MiKTeX\tex/latex/newtx\ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 123.
-LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 125.
+(Font)              scaled to size 12.0pt on input line 133.
+
+
+[5{D:/Program Files/MiKTeX/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
+LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 181.
  (D:\Program Files\MiKTeX\tex/latex/newtx\ot1ntxtt.fd
 File: ot1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
-(Font)              scaled to size 12.0pt on input line 125.
+(Font)              scaled to size 12.0pt on input line 181.
 
-
-[4{D:/Program Files/MiKTeX/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
-
-[5]
-Overfull \hbox (24.77213pt too wide) in paragraph at lines 236--263
- [][] 
- []
-
-
-
-[6]
-Overfull \hbox (3.11427pt too wide) in paragraph at lines 296--298
-[]\OT1/ntxtlf/b/n/12 Scale In-te-gra-tion\OT1/minntx/m/n/12 : Mod-ern mod-els in-creas-ingly com-bine mul-ti-ple ar-chi-tec-tural paradigms
- []
-
-
-Overfull \hbox (48.10303pt too wide) in paragraph at lines 316--318
+Overfull \hbox (48.10303pt too wide) in paragraph at lines 181--183
 \OT1/minntx/m/n/12 mod-ules form the core: \OT1/ntxtt/m/n/12 llm[]platform.py \OT1/minntx/m/n/12 loads the quan-tised \OT1/ntxtt/m/n/12 Llama-3.2-3B-Instruct-Q4[]K[]M.gguf
  []
 
-
-
-[7]
-<Figures/llama对话.png, id=249, 863.3684pt x 505.02965pt>
+<Figures/llama对话.png, id=206, 863.3684pt x 505.02965pt>
 File: Figures/llama对话.png Graphic file (type png)
 <use Figures/llama对话.png>
-Package pdftex.def Info: Figures/llama对话.png  used on input line 335.
+Package pdftex.def Info: Figures/llama对话.png  used on input line 202.
 (pdftex.def)             Requested size: 430.31812pt x 251.72047pt.
 
 
-[8 <./Figures/llama对话.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 354--354
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 221--221
 []|\OT1/minntx/m/n/12 model[]path,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--354
+Underfull \hbox (badness 10000) in paragraph at lines 221--221
 \OT1/minntx/m/n/12 n[]gpu[]layers, n[]ctx,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 355--355
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
 []|\OT1/minntx/m/n/12 temperature, top[]p,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 355--355
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
 \OT1/minntx/m/n/12 top[]k, re-peat[]penalty,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--356
+Underfull \hbox (badness 10000) in paragraph at lines 225--225
 []|\OT1/minntx/m/n/12 max[]history, sys-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--357
+Underfull \hbox (badness 10000) in paragraph at lines 227--227
 []|\OT1/minntx/m/n/12 gpu[]enabled,
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 357--357
+Underfull \hbox (badness 2343) in paragraph at lines 227--227
 \OT1/minntx/m/n/12 max[]gpu[]layers, mem-
  []
 
 
-Overfull \hbox (40.30608pt too wide) in paragraph at lines 366--368
+Overfull \hbox (40.30608pt too wide) in paragraph at lines 237--239
 []\OT1/ntxtlf/b/n/12 Initialization\OT1/minntx/m/n/12 : Val-i-date model pres-ence; in-stan-ti-ate \OT1/ntxtt/m/n/12 Llama \OT1/minntx/m/n/12 with GPU of-fload-ing (\OT1/ntxtt/m/n/12 n[]gpu[]layers=35\OT1/minntx/m/n/12 ). 
  []
 
+
+
+[7 <./Figures/llama对话.png>]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 385.
+(Font)              scaled to size 12.0pt on input line 256.
+
+
+[8]
+<Figures/llamaGPU.png, id=244, 1004.89714pt x 618.59679pt>
+File: Figures/llamaGPU.png Graphic file (type png)
+<use Figures/llamaGPU.png>
+Package pdftex.def Info: Figures/llamaGPU.png  used on input line 322.
+(pdftex.def)             Requested size: 452.9679pt x 278.83794pt.
 
 
 [9]
 
-[10]
-<Figures/llamaGPU.png, id=286, 1004.89714pt x 618.59679pt>
-File: Figures/llamaGPU.png Graphic file (type png)
-<use Figures/llamaGPU.png>
-Package pdftex.def Info: Figures/llamaGPU.png  used on input line 451.
-(pdftex.def)             Requested size: 452.9679pt x 278.83794pt.
+[10 <./Figures/llamaGPU.png>]
 
-
-[11 <./Figures/llamaGPU.png>]
+[11]
 
 [12]
 
-[13]
-
-[14]
-
-[15] (5112Report_Group7.aux)
+[13] (5112Report_Group7.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `5112Report_Group7.out' has not changed.
-(rerunfilecheck)             Checksum: 59CC5844AEB47ECC60AFB5EC39740EEB;6899.
+(rerunfilecheck)             Checksum: 9F8E0CCB1007FBD609DEAD0BFFF26BC2;5905.
+Package logreq Info: Writing requests to '5112Report_Group7.run.xml'.
+\openout1 = `5112Report_Group7.run.xml'.
+
  ) 
 Here is how much of TeX's memory you used:
- 19988 strings out of 469959
- 367426 string characters out of 5479910
- 712596 words of memory out of 5000000
- 46416 multiletter control sequences out of 15000+600000
+ 27196 strings out of 469959
+ 513946 string characters out of 5479910
+ 1277568 words of memory out of 5000000
+ 53574 multiletter control sequences out of 15000+600000
  667467 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,11n,131p,640b,1161s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,11n,131p,771b,1381s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><D:/Program Files/MiKTeX/fonts/type1/public/tex-gyre/qtmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/txfonts/txtt.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
-Output written on 5112Report_Group7.pdf (15 pages, 454209 bytes).
+Output written on 5112Report_Group7.pdf (13 pages, 453230 bytes).
 PDF statistics:
- 360 PDF objects out of 1000 (max. 8388607)
- 87 named destinations out of 1000 (max. 500000)
- 331 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 319 PDF objects out of 1000 (max. 8388607)
+ 81 named destinations out of 1000 (max. 500000)
+ 259 words of extra memory for PDF output out of 10000 (max. 10000000)
 

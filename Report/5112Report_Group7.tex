@@ -15,6 +15,8 @@
 \usepackage{siunitx}
 % SI单位包：科学单位
 \usepackage[hidelinks]{hyperref} % 去除目录/链接红框
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{references.bib}
 % Hyperref包：超链接，隐藏链接边框
 \usepackage{enumitem}
 % Enumitem包：列表项
@@ -22,6 +24,7 @@
 % Float包：浮动环境
 \usepackage{subcaption}
 % Subcaption包：子标题
+
 
 % 设置页面格式：1英寸边距，1.5倍行距，12点Times New Roman字体
 \geometry{margin=1in}
@@ -35,10 +38,6 @@
 Niu Mu (Matriculation Number)\\
 Wu Zining (A0294373W)\\
 Zhao Jinqiu (Matriculation Number)}
-% 作者：第7组\\
-% 牛牧（学号）\\
-% 吴子宁（A0294373W）\\
-% 赵金秋（学号）
 \date{\today}
 % 日期：今天
 
@@ -117,116 +116,30 @@ The main objectives of this project are:
     % 提供问题发现和解决的实践经验
 \end{enumerate}
 
-\paragraph{Operational highlights.}
-% 运行要点：下面列出本地平台的关键运行行为和设计决策（含中文注释）
-\begin{itemize}[leftmargin=1.2em]
-    \item Streaming is enabled by default so the first token appears almost immediately, minimizing perceived latency.
-    % 流式默认开启：首个 token 几乎立即出现，减少用户感知延迟。
-    \item Conversation history is trimmed to the three most recent turns, preserving context while staying within the \texttt{4096} token window.
-    % 历史截断策略：仅保留最近三轮对话，以兼顾上下文与 4096 token 窗口限制。
-    \item Every exchange is timestamped and stored in \texttt{conversations/}, which simplifies audits and later evaluation.
-    % 对话持久化：每次交互均带时间戳并保存到 \texttt{conversations/}，便于审计与后续评估。
-\end{itemize}
 
-Overall, the implementation remains compact yet extensible, allowing higher-level dialogue management or evaluation modules to plug in without touching the inference core.
-% 总体而言，该实现保持紧凑却具可扩展性，可作为后续对话管理或评估模块的基座。
-\textbf{Key Characteristics:}
-% 关键特征：
+% Task1 
+\section{Task 1: Develop the Dialogue Systems according to aspiration/interest.}
+
+% Task2
+\section{Task 2: Develop Local Dialogue Systems by Using Open-Source LLMs}
+
+\subsection{Literature Review on Different Categories of LLMs}
+% 不同类型LLM的文献综述
+
+Large Language Models (LLMs) can be broadly categorized into three main architectures based on their use of the transformer mechanism \cite{vaswani2017attention}: Encoder-Decoder, Encoder-Only, and Decoder-Only. Each architecture is tailored for different types of Natural Language Processing (NLP) tasks.
+% 大型语言模型（LLM）可根据其对Transformer机制的使用情况\cite{vaswani2017attention}，大致分为三种主要架构：编码器-解码器、仅编码器和仅解码器。每种架构都针对不同类型的自然语言处理（NLP）任务进行了优化。
+
 \begin{itemize}
-    \item Bidirectional attention in the encoder captures context from both directions
-    % 编码器中的双向注意力从两个方向捕获上下文
-    \item Unidirectional attention in the decoder enables autoregressive generation
-    % 解码器中的单向注意力实现自回归生成
-    \item Explicit separation between understanding (encoding) and generation (decoding) phases
-    % 理解（编码）和生成（解码）阶段的明确分离
+    \item \textbf{Encoder-Decoder models}, such as T5 \cite{raffel2020exploring} and BART \cite{lewis2019bart}, utilize both a bidirectional encoder to process the input text and an autoregressive decoder to generate output. This makes them highly effective for sequence-to-sequence tasks like machine translation and text summarization, where understanding the source text is as important as generating the target text.
+    % \textbf{编码器-解码器模型}，如T5 \cite{raffel2020exploring}和BART \cite{lewis2019bart}，同时使用双向编码器处理输入文本和自回归解码器生成输出。这使得它们在机器翻译和文本摘要等序列到序列任务中非常有效，因为在这些任务中，理解源文本与生成目标文本同样重要。
+    \item \textbf{Encoder-Only models}, like BERT \cite{devlin2018bert} and RoBERTa \cite{liu2019roberta}, use only the bidirectional encoder. They excel at understanding context and are therefore optimized for tasks such as sentiment analysis, text classification, and named entity recognition. However, they are not inherently suited for text generation.
+    % \textbf{仅编码器模型}，如BERT \cite{devlin2018bert}和RoBERTa \cite{liu2019roberta}，仅使用双向编码器。它们擅长理解上下文，因此针对情感分析、文本分类和命名实体识别等任务进行了优化。然而，它们本身不适合文本生成。
+    \item \textbf{Decoder-Only models}, including the GPT series \cite{radford2018improving} and LLaMA \cite{touvron2023llama}, employ a unidirectional (causal) decoder. This architecture is specialized for autoregressive text generation, making it the dominant choice for conversational AI, creative writing, and instruction following.
+    % \textbf{仅解码器模型}，包括GPT系列 \cite{radford2018improving}和LLaMA \cite{touvron2023llama}，采用单向（因果）解码器。该架构专门用于自回归文本生成，使其成为对话AI、创意写作和指令遵循的主流选择。
 \end{itemize}
 
-\textbf{Representative Models:}
-% 代表性模型：
-\begin{itemize}
-    \item \textbf{T5 (Text-to-Text Transfer Transformer)}: Treats all NLP tasks as text-to-text problems, achieving state-of-the-art performance across diverse benchmarks
-    % T5（文本到文本转换transformer）：将所有NLP任务视为文本到文本问题，在各种基准上实现最先进的性能
-    \item \textbf{BART (Bidirectional and Auto-Regressive Transformers)}: Combines bidirectional encoder with autoregressive decoder, excelling in text generation and denoising tasks
-    % BART（双向和自回归transformer）：结合双向编码器和自回归解码器，在文本生成和去噪任务中表现出色
-    \item \textbf{mT5}: Multilingual extension of T5 supporting over 100 languages
-    % mT5：T5的多语言扩展，支持超过100种语言
-\end{itemize}
-
-\paragraph{Encoder-Only Models}
-% 仅编码器模型
-
-% 仅编码器模型 - 如BERT、RoBERTa等
-% Encoder-only models - such as BERT, RoBERTa, etc.
-
-Encoder-only models utilize only the encoder component of the transformer architecture, employing bidirectional attention to process input sequences. These models excel at understanding and representation learning tasks rather than text generation.
-% 仅编码器模型仅使用transformer架构的编码器组件，采用双向注意力来处理输入序列。这些模型擅长理解和表示学习任务，而不是文本生成。
-
-\textbf{Key Characteristics:}
-% 关键特征：
-\begin{itemize}
-    \item Bidirectional attention mechanism captures full context
-    % 双向注意力机制捕获完整上下文
-    \item Optimized for understanding tasks rather than generation
-    % 针对理解任务而非生成进行优化
-    \item Require task-specific heads for downstream applications
-    % 需要特定于任务的头部用于下游应用
-    \item Typically used for classification, named entity recognition, and feature extraction
-    % 通常用于分类、命名实体识别和特征提取
-\end{itemize}
-
-\textbf{Representative Models:}
-% 代表性模型：
-\begin{itemize}
-    \item \textbf{BERT (Bidirectional Encoder Representations from Transformers)}: Pioneer in bidirectional language modeling, achieving breakthrough performance in NLU tasks
-    % BERT（来自transformers的双向编码器表示）：双向语言建模的先驱，在NLU任务中实现突破性性能
-    \item \textbf{RoBERTa}: Optimized version of BERT with improved training procedures and longer training duration
-    % RoBERTa：BERT的优化版本，具有改进的训练程序和更长的训练持续时间
-    \item \textbf{DeBERTa}: Enhanced BERT with disentangled attention mechanism and enhanced mask decoder
-    % DeBERTa：具有解缠注意力机制和增强掩码解码器的增强BERT
-    \item \textbf{ELECTRA}: More efficient pre-training using replaced token detection instead of masked language modeling
-    % ELECTRA：使用替换token检测而不是掩码语言建模的更高效预训练
-\end{itemize}
-
-\paragraph{Decoder-Only Models}
-% 仅解码器模型
-
-% 仅解码器模型 - 如GPT系列、LLaMA等
-% Decoder-only models - such as GPT series, LLaMA, etc.
-
-Decoder-only models rely exclusively on the decoder component with causal (unidirectional) attention, making them highly effective for autoregressive text generation tasks. This architecture has become the dominant paradigm for modern conversational AI systems.
-% 仅解码器模型完全依赖于具有因果（单向）注意力的解码器组件，使其对自回归文本生成任务非常有效。这种架构已成为现代对话AI系统的主导范式。
-
-\textbf{Key Characteristics:}
-% 关键特征：
-\begin{itemize}
-    \item Unidirectional attention prevents information leakage during training
-    % 单向注意力防止训练期间信息泄漏
-    \item Optimized for text generation and completion tasks
-    % 针对文本生成和完成任务进行优化
-    \item Can be fine-tuned for various downstream tasks through instruction following
-    % 可以通过指令跟随针对各种下游任务进行微调
-    \item Generally require larger model sizes to achieve competitive performance
-    % 通常需要更大的模型尺寸来实现竞争性性能
-\end{itemize}
-
-\textbf{Representative Models:}
-% 代表性模型：
-\begin{itemize}
-    \item \textbf{GPT (Generative Pre-trained Transformer) Series}: GPT-1, GPT-2, GPT-3, and GPT-4 represent the evolution of decoder-only models with increasing scale and capabilities
-    % GPT（生成式预训练transformer）系列：GPT-1、GPT-2、GPT-3和GPT-4代表了仅解码器模型的演变，具有不断增加的规模和能力
-    \item \textbf{LLaMA (Large Language Model Meta AI)}: Efficient decoder-only model achieving competitive performance with smaller parameter counts
-    % LLaMA（Meta AI大型语言模型）：高效的仅解码器模型，以较少的参数计数实现竞争性性能
-    \item \textbf{GLM (General Language Model)}: Chinese-developed model combining autoregressive and autoencoding approaches
-    % GLM（通用语言模型）：中国开发的模型，结合自回归和自编码方法
-    \item \textbf{PaLM (Pathways Language Model)}: Google's large-scale decoder-only model with 540B parameters
-    % PaLM（Pathways语言模型）：谷歌的大型仅解码器模型，具有540B参数
-\end{itemize}
-
-\subsubsection{Comparative Analysis}
-% 对比分析
-
-% 对比分析 - 不同类型LLM的特点和应用场景
-% Comparative analysis - Characteristics and application scenarios of different LLM types
+The key differences, performance trade-offs, and typical applications of these architectures are summarized in Table~\ref{tab:llm_comparison}. Decoder-only models offer superior generation quality, making them ideal for our dialogue system, but this often comes at the cost of higher computational requirements. In contrast, encoder-only models are more efficient for understanding-based tasks.
+% 这些架构的关键差异、性能权衡和典型应用总结在表~\ref{tab:llm_comparison}中。仅解码器模型提供卓越的生成质量，使其成为我们对话系统的理想选择，但这通常以更高的计算要求为代价。相比之下，仅编码器模型在基于理解的任务上更高效。
 
 \begin{table}[H]
 \centering
@@ -241,20 +154,11 @@ Decoder-only models rely exclusively on the decoder component with causal (unidi
 Primary Use & Seq2Seq tasks & Understanding tasks & Generation tasks \\
 % 主要用途 & Seq2Seq任务 & 理解任务 & 生成任务
 \hline
-Attention Mechanism & Bidirectional + Causal & Bidirectional & Causal \\
+Attention & Bidirectional + Causal & Bidirectional & Causal \\
 % 注意力机制 & 双向 + 因果 & 双向 & 因果
-\hline
-Training Efficiency & Medium & High & Low (for large models) \\
-% 训练效率 & 中等 & 高 & 低（对于大型模型）
-\hline
-Inference Speed & Medium & Fast & Slow (for large models) \\
-% 推理速度 & 中等 & 快 & 慢（对于大型模型）
 \hline
 Task Flexibility & High & Medium & High \\
 % 任务灵活性 & 高 & 中等 & 高
-\hline
-Parameter Efficiency & Medium & High & Low \\
-% 参数效率 & 中等 & 高 & 低
 \hline
 Representative Models & T5, BART & BERT, RoBERTa & GPT, LLaMA \\
 % 代表性模型 & T5, BART & BERT, RoBERTa & GPT, LLaMA
@@ -262,48 +166,9 @@ Representative Models & T5, BART & BERT, RoBERTa & GPT, LLaMA \\
 \end{tabular}
 \end{table}
 
-\textbf{Performance Trade-offs:}
-% 性能权衡：
+Recent trends indicate a move towards more efficient and multimodal models, but a solid understanding of these foundational architectures is crucial for developing effective dialogue systems.
+% 最近的趋势表明，模型正朝着更高效和多模态的方向发展，但对这些基础架构的深入理解对于开发有效的对话系统至关重要。
 
-\begin{itemize}
-    \item \textbf{Encoder-Decoder Models}: Offer balanced performance for both understanding and generation tasks, but require more computational resources due to dual architecture
-    % 编码器-解码器模型：为理解和生成任务提供平衡性能，但由于双重架构需要更多计算资源
-    \item \textbf{Encoder-Only Models}: Excel at understanding tasks with high efficiency, but limited generation capabilities
-    % 仅编码器模型：在理解任务中表现出色且高效，但生成能力有限
-    \item \textbf{Decoder-Only Models}: Superior generation quality and conversational abilities, but require significant computational resources for training and inference
-    % 仅解码器模型：生成质量和对话能力优越，但训练和推理需要大量计算资源
-\end{itemize}
-
-\textbf{Application Scenarios:}
-% 应用场景：
-
-\begin{itemize}
-    \item \textbf{Encoder-Decoder}: Machine translation, text summarization, question answering systems
-    % 编码器-解码器：机器翻译、文本摘要、问答系统
-    \item \textbf{Encoder-Only}: Sentiment analysis, named entity recognition, text classification, feature extraction
-    % 仅编码器：情感分析、命名实体识别、文本分类、特征提取
-    \item \textbf{Decoder-Only}: Conversational AI, creative writing, code generation, instruction following
-    % 仅解码器：对话AI、创意写作、代码生成、指令跟随
-\end{itemize}
-
-\subsubsection{Recent Trends and Future Directions}
-% 最新趋势和未来方向
-
-Recent developments in LLM architectures show several emerging trends:
-% LLM架构的最新发展显示出几个新兴趋势：
-
-\begin{itemize}
-    \item \textbf{Scale Integration}: Modern models increasingly combine multiple architectural paradigms (e.g., encoder-decoder with decoder-only components)
-    % 规模集成：现代模型越来越多地结合多种架构范式（例如，编码器-解码器与仅解码器组件）
-    \item \textbf{Efficiency Optimization}: Focus on reducing computational requirements while maintaining performance through techniques like knowledge distillation and model compression
-    % 效率优化：通过知识蒸馏和模型压缩等技术减少计算需求同时保持性能
-    \item \textbf{Multimodal Integration}: Extension of decoder-only models to handle multiple modalities (text, vision, audio)
-    % 多模态集成：扩展仅解码器模型以处理多种模态（文本、视觉、音频）
-    \item \textbf{Specialized Architectures}: Development of task-specific architectures optimized for particular domains or applications
-    % 专用架构：开发针对特定领域或应用的特定任务架构
-\end{itemize}
-
-This comprehensive understanding of different LLM architectures provides the foundation for selecting appropriate models for specific applications in dialogue systems and local LLM platforms.
 % 对不同LLM架构的全面理解为在对话系统和本地LLM平台中选择适当模型提供了基础。
 
 
@@ -314,32 +179,34 @@ This comprehensive understanding of different LLM architectures provides the fou
 % 本地LLM平台实现
 
 This subsection summarises the local dialogue stack that powers Task~2. Two lightweight Python modules form the core: \texttt{llm\_platform.py} loads the quantised \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} model through \texttt{llama-cpp-python}, while \texttt{dialogue\_system.py} wraps the runtime with conversation management, persistence and a CLI loop. The design favours offline execution, minimal dependencies, and rapid iteration between CPU and GPU backends.
-% 本小节概述驱动任务2的本地对话栈，强调离线执行、轻量依赖与 CPU/GPU 可切换性。
+% 本小节概述了驱动任务2的本地对话栈。两个轻量级Python模块构成其核心：\texttt{llm\_platform.py} 通过 \texttt{llama-cpp-python} 加载量化的 \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} 模型，而 \texttt{dialogue\_system.py} 则封装了运行时，包含对话管理、持久化和命令行交互循环。该设计倾向于离线执行、最小化依赖，并支持在CPU和GPU后端之间快速迭代。
 
 \paragraph{Key components.}
+% 关键组件
 \begin{itemize}[leftmargin=1.2em]
     \item \textbf{Runtime wrapper}: abstracts model loading, sampling strategies, and streaming output so the main flow stays decoupled from the inference engine.
-    % Runtime 封装
+    % \textbf{运行时封装}：抽象了模型加载、采样策略和流式输出，使主流程与推理引擎解耦。
     \item \textbf{Dialogue controller}: manages multi-turn history, CLI commands (exit/clear/stats), and JSON transcript persistence.
-    % Dialogue 控制器
+    % \textbf{对话控制器}：管理多轮对话历史、命令行命令（退出/清除/统计）以及JSON格式的对话记录持久化。
     \item \textbf{Hardware adapter}: toggles GPU offload versus CPU mode based on configuration and prepares the required environment variables.
-    % 硬件适配
+    % \textbf{硬件适配器}：根据配置切换GPU卸载或CPU模式，并准备所需的环境变量。
 \end{itemize}
 
 \paragraph{Execution flow.}
+% 执行流程
 Each user turn triggers a compact pipeline: (1) log the input and trim conversation history, (2) build an instruction-style context with system/user/assistant roles, (3) call the model via synchronous or streamed generation, and (4) persist the reply in memory and on disk for traceability.
-% 简述执行流程。
+% 每个用户回合都会触发一个紧凑的流程：(1) 记录输入并修剪对话历史，(2) 使用系统/用户/助手角色构建指令式上下文，(3) 通过同步或流式生成调用模型，以及 (4) 将回复持久化到内存和磁盘以供追溯。
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\linewidth]{Figures/llama对话.png}
     \caption{CPU baseline session captured before enabling GPU acceleration.}
-    % CPU 基准会话截图，较长的延迟凸显优化空间
+    % 在启用GPU加速前捕获的CPU基准会话。
     \label{fig:llama_cpu_chat}
 \end{figure}
 
 To keep behaviour reproducible across hardware profiles we maintain a single \texttt{config.json}. The file separates generative, dialogue, model, and hardware knobs so that experiments remain traceable.
-% 说明配置文件分域维护。
+% 为了在不同硬件配置文件上保持行为的可复现性，我们维护一个单一的 \texttt{config.json} 文件。该文件将生成、对话、模型和硬件的参数分开，以便实验保持可追溯性。
 
 \begin{table}[H]
 \centering
@@ -352,9 +219,13 @@ To keep behaviour reproducible across hardware profiles we maintain a single \te
 % 分组 & 关键字段 & 目的
 \hline
 Model & model\_path, n\_gpu\_layers, n\_ctx, n\_threads & Load quantized model; balance context length vs memory footprint. \\
+% 模型 & model\_path, n\_gpu\_layers, n\_ctx, n\_threads & 加载量化模型；平衡上下文长度与内存占用。
 Generation & temperature, top\_p, top\_k, repeat\_penalty, max\_tokens & Control diversity, prevent repetition, limit response budget. \\
+% 生成 & temperature, top\_p, top\_k, repeat\_penalty, max\_tokens & 控制多样性、防止重复、限制响应预算。
 Dialogue & max\_history, system\_prompt, streaming, save\_conversations & Maintain conversational coherence and UX features. \\
+% 对话 & max\_history, system\_prompt, streaming, save\_conversations & 保持对话连贯性和用户体验特性。
 Hardware & gpu\_enabled, max\_gpu\_layers, memory\_fraction & Allocate GPU layers and avoid memory oversubscription. \\
+% 硬件 & gpu\_enabled, max\_gpu\_layers, memory\_fraction & 分配GPU层并避免内存超额分配。
 \hline
 \end{tabular}
 \end{table}
@@ -364,59 +235,59 @@ Hardware & gpu\_enabled, max\_gpu\_layers, memory\_fraction & Allocate GPU layer
 
 \begin{enumerate}[leftmargin=1.2em]
     \item \textbf{Initialization}: Validate model presence; instantiate \texttt{Llama} with GPU offloading (\texttt{n\_gpu\_layers=35}).
-    % 初始化：验证模型文件，创建 Llama 实例并执行 GPU 分层卸载。
+    % \textbf{初始化}：验证模型是否存在；使用GPU卸载实例化 \texttt{Llama}（\texttt{n\_gpu\_layers=35}）。
     \item \textbf{Input Capture}: User utterance appended to in-memory history (role-tagged JSON objects).
-    % 输入捕获：用户消息追加到内存历史。
+    % \textbf{输入捕获}：将用户话语附加到内存中的历史记录（带角色标签的JSON对象）。
     \item \textbf{Context Assembly}: Select last $k$ exchanges (<=6) + system prompt into structured token template.
-    % 上下文组装：取最近若干轮 + system prompt 组成结构化模板。
+    % \textbf{上下文组装}：选择最近的 $k$ 轮交流（<=6）+ 系统提示，构成结构化的令牌模板。
     \item \textbf{Generation}: Call synchronous or streaming API; apply sampling constraints and stop tokens.
-    % 生成：同步或流式调用，应用采样与停止序列。
+    % \textbf{生成}：调用同步或流式API；应用采样约束和停止令牌。
     \item \textbf{Streaming (Optional)}: UI prints incremental tokens; latency perceived as reduced.
-    % 流式（可选）：界面逐 token 输出，降低感知延迟。
+    % \textbf{流式（可选）}：UI打印增量令牌；感知延迟降低。
     \item \textbf{Post-processing}: Trim whitespace; append assistant reply to history.
-    % 后处理：清理并写回历史。
+    % \textbf{后处理}：修剪空白；将助手回复附加到历史记录。
     \item \textbf{Persistence}: If enabled, serialize pair into conversation JSON (timestamped). 
-    % 持久化：若开启，序列化写入 JSON。
+    % \textbf{持久化}：如果启用，将对话对序列化为带时间戳的JSON文件。
 \end{enumerate}
 
 \subsubsection*{Streaming Mechanism}
 % 流式机制
 
 The streaming interface wraps the backend iterator, yielding \emph{delta} fragments; the UI layer concatenates them to form the final assistant turn. This improves responsiveness for longer generations and mirrors modern production chat UX. A termination check monitors \texttt{finish\_reason} in the final chunk.
-% 流式接口封装底层迭代器，逐步输出增量文本分片，界面拼接形成完整回复；提升长回答交互响应性，并监测最后块的 \texttt{finish\_reason} 实现有序终止。
+% 流式接口封装了后端迭代器，产生\emph{增量}片段；UI层将它们连接起来形成最终的助手回合。这提高了长文本生成的响应性，并模仿了现代生产环境中的聊天用户体验。终止检查会监控最后一块中的 \texttt{finish\_reason}。
 
 \subsubsection*{Data Persistence and Reproducibility}
 % 数据持久化与可复现性
 
 Conversations are stored under \texttt{conversations/} using ISO8601 timestamps for auditing. Each file aggregates ordered message tuples preserving role, content, and creation time, enabling later evaluation or fine-tuning dataset curation.
-% 对话以 ISO8601 时间戳文件名保存在 \texttt{conversations/}，保留角色/内容/时间顺序，便于评估与后续数据蒸馏或微调语料整理。
+% 对话使用ISO8601时间戳存储在 \texttt{conversations/} 目录下以供审计。每个文件聚合了有序的消息元组，保留了角色、内容和创建时间，从而为以后的评估或微调数据集的整理提供了可能。
 
 \subsubsection*{Performance Considerations}
 % 性能考量
 
 We adopt Q4\_K\_M quantization to balance memory (\(~3\,GB GPU usage\)) and quality for a consumer-grade 16GB GPU. Streaming reduces perceived latency; selective history truncation prevents context overflow. CPU threads (\texttt{n\_threads=8}) parallelize token probability computation for non-offloaded layers.
-% 采用 Q4\_K\_M 量化在 16GB GPU 上平衡显存（约3GB）与质量；流式降低感知延迟；历史截断避免上下文溢出；CPU 多线程加速未下放层计算。
+% 我们采用Q4\_K\_M量化，以便在消费级16GB GPU上平衡内存（约3GB GPU使用量）和质量。流式传输减少了感知延迟；选择性的历史截断可防止上下文溢出。CPU线程（\texttt{n\_threads=8}）可并行计算未卸载层的令牌概率。
 
 \subsubsection*{Reliability and Error Handling}
 % 可靠性与错误处理
 
 Model load failures (missing file / incompatible quantization) are trapped with fallback messaging. Generation exceptions during streaming yield an inline error token without aborting the application. Conversation save errors are gracefully warned (non-fatal).
-% 模型加载失败（缺文件/量化不兼容）被捕获；流式生成异常以内联错误标记返回；保存失败仅告警而不终止主循环。
+% 模型加载失败（文件丢失/量化不兼容）会通过回退消息捕获。流式传输过程中的生成异常会产生一个内联错误令牌，而不会中止应用程序。对话保存错误会以警告方式优雅处理（非致命）。
 
 \subsubsection*{Strengths and Limitations}
 % 优势与局限
 
 \begin{itemize}[leftmargin=1.2em]
     \item \textbf{Strengths}: Offline privacy; modular layering; streaming UX; clean JSON audit trail; hardware-aware configuration.
-    % 优势：离线隐私；模块分层；流式体验；JSON 审计轨迹；硬件感知配置。
+    % \textbf{优势}：离线隐私；模块化分层；流式用户体验；清晰的JSON审计跟踪；硬件感知配置。
     \item \textbf{Limitations}: Single-model runtime (no dynamic model pool); absence of advanced memory (vector retrieval); limited evaluation hooks in current phase.
-    % 局限：单模型运行；缺向量检索记忆；当前阶段缺少评估挂钩。
+    % \textbf{局限}：单模型运行时（无动态模型池）；缺少高级内存（向量检索）；当前阶段评估钩子有限。
     \item \textbf{Future Work}: Add retrieval-augmented generation, multi-model routing, automated quality metrics, and GUI integration.
-    % 未来工作：加入检索增强、多模型路由、自动化质量指标与 GUI 集成。
+    % \textbf{未来工作}：添加检索增强生成、多模型路由、自动化质量指标和GUI集成。
 \end{itemize}
 
 Overall, the implementation delivers a privacy-preserving, extensible inference substrate suitable for subsequent integration with higher-level dialogue management and evaluation modules in later tasks.
-% 总体而言，该实现提供一个隐私友好、可扩展的推理底座，为后续任务中的高层对话管理与评估模块集成奠定基础。
+% 总体而言，该实现提供了一个保护隐私、可扩展的推理基础，适用于后续任务中与更高级别的对话管理和评估模块的集成。
 
 \subsection{Performance Comparison: CPU vs GPU Deployment}
 % 性能比较：CPU 与 GPU 部署
@@ -457,115 +328,26 @@ Figure~\ref{fig:llama_cpu_chat} shows the slower CPU baseline, while Figure~\ref
 \subsection{Comparation of Different Pretrained Models}
 % 不同预训练模型的比较
 
-% 本节将对比不同的预训练模型在对话系统中的表现，包括它们的架构、训练数据和生成能力等方面。
+% Task3
+\section{Task 3: LLM Performance Evaluation}
+% 任务3：LLM性能评估
 
-\section{Task 3: Dialogue System Development}
-% 任务3：对话系统开发
+[Placeholder for Task 3 content]
+% [任务3内容占位符]
 
-% 任务3：对话系统开发 - 开发完整的对话系统
-% Task 3: Dialogue System Development - Develop complete dialogue system
+% Task4
+\section{Task 4: GUI for Local LLM}
+% 任务4：为本地LLM设计图形用户界面（GUI）
 
-\subsection{Dialogue System Architecture}
-% 对话系统架构
+[Placeholder for Task 4 content]
+% [任务4内容占位符]
 
-% 对话系统架构 - 设计对话系统的整体架构
-% Dialogue system architecture - Design overall architecture of dialogue system
+% Task5
+\section{Task 5: Exploring Multimodal Large Language Models (MLLMs)}
+% 任务5：探索多模态大型语言模型（MLLMs）
 
-[Placeholder for dialogue system architecture content]
-% [对话系统架构内容占位符]
-
-\subsection{Natural Language Processing Components}
-% 自然语言处理组件
-
-% 自然语言处理组件 - 实现NLP相关功能
-% Natural language processing components - Implement NLP-related functions
-
-[Placeholder for NLP components content]
-% [NLP组件内容占位符]
-
-\subsection{Multi-modal Communication}
-% 多模态通信
-
-% 多模态通信 - 实现文本、语音、图形等多模态交互
-% Multi-modal communication - Implement multi-modal interaction including text, speech, graphics
-
-[Placeholder for multi-modal communication content]
-% [多模态通信内容占位符]
-
-\subsection{Dialogue Management}
-% 对话管理
-
-% 对话管理 - 实现对话状态管理和上下文处理
-% Dialogue management - Implement dialogue state management and context processing
-
-[Placeholder for dialogue management content]
-% [对话管理内容占位符]
-
-\section{Task 4: System Integration and Testing}
-% 任务4：系统集成和测试
-
-% 任务4：系统集成和测试 - 整合所有组件并进行测试
-% Task 4: System Integration and Testing - Integrate all components and perform testing
-
-\subsection{Component Integration}
-% 组件集成
-
-% 组件集成 - 将LLM平台和对话系统集成
-% Component integration - Integrate LLM platform with dialogue system
-
-[Placeholder for component integration content]
-% [组件集成内容占位符]
-
-\subsection{System Testing}
-% 系统测试
-
-% 系统测试 - 测试整个系统的功能
-% System testing - Test overall system functionality
-
-[Placeholder for system testing content]
-% [系统测试内容占位符]
-
-\subsection{Performance Optimization}
-% 性能优化
-
-% 性能优化 - 优化系统性能
-% Performance optimization - Optimize system performance
-
-[Placeholder for performance optimization content]
-% [性能优化内容占位符]
-
-\section{Task 5: LLM Evaluation}
-% 任务5：LLM评估
-
-% 任务5：LLM评估 - 熟悉LLM评估程序
-% Task 5: LLM Evaluation - Familiarize with LLM evaluation procedures
-
-\subsection{Evaluation Metrics}
-% 评估指标
-
-% 评估指标 - 定义和选择LLM评估指标
-% Evaluation metrics - Define and select LLM evaluation metrics
-
-[Placeholder for evaluation metrics content]
-% [评估指标内容占位符]
-
-\subsection{Evaluation Framework Implementation}
-% 评估框架实现
-
-% 评估框架实现 - 实现LLM评估框架
-% Evaluation framework implementation - Implement LLM evaluation framework
-
-[Placeholder for evaluation framework implementation content]
-% [评估框架实现内容占位符]
-
-\subsection{Performance Analysis}
-% 性能分析
-
-% 性能分析 - 分析LLM和对话系统的性能
-% Performance analysis - Analyze performance of LLM and dialogue system
-
-[Placeholder for performance analysis content]
-% [性能分析内容占位符]
+[Placeholder for Task 5 content]
+% [任务5内容占位符]
 
 
 \subsection{Solution Implementation}
@@ -679,11 +461,8 @@ Figure~\ref{fig:llama_cpu_chat} shows the slower CPU baseline, while Figure~\ref
 \section{References}
 % 参考文献
 
-% 参考文献 - 引用所有相关文献
-% References - Cite all relevant literature
-
-[Placeholder for references - Use proper citation format]
-% [参考文献占位符 - 使用正确的引用格式]
+\printbibliography
+% 打印参考文献列表
 
 \section{Appendix}
 % 附录
