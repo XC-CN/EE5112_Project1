@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse
 import json
 import os
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+os.environ.setdefault("RAYON_NUM_THREADS", "4")
 import sys
 import time
 from dataclasses import dataclass
