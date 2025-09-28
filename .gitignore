@@ -1,4 +1,14 @@
-/.vscode
+﻿/.vscode
 __pycache__/
 *.pyc
 *.gguf
+hf_cache/
+**/hf_cache/
+**/.cache/
+**/llama31-vllm/
+Task2/Llama-3.1-8B-Instruct/conversations/*
+!Task2/Llama-3.1-8B-Instruct/conversations/.gitkeep
+Task2/Llama-3.1-8B-Instruct/vllm/conversations_vllm/*
+!Task2/Llama-3.1-8B-Instruct/vllm/conversations_vllm/.gitkeep
+Task2/Llama-3.1-8B-Instruct/vllm/__pycache__/
+Task2/Llama-3.1-8B-Instruct/__pycache__/
