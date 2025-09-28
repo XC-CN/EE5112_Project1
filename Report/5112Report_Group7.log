@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.9.25)  28 SEP 2025 17:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.9.25)  28 SEP 2025 21:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1036,103 +1036,57 @@ File: ot1ntxtt.fd 2012/04/20 v3.1
 LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
 (Font)              scaled to size 12.0pt on input line 181.
 
-Overfull \hbox (48.10303pt too wide) in paragraph at lines 181--183
-\OT1/minntx/m/n/12 mod-ules form the core: \OT1/ntxtt/m/n/12 llm[]platform.py \OT1/minntx/m/n/12 loads the quan-tised \OT1/ntxtt/m/n/12 Llama-3.2-3B-Instruct-Q4[]K[]M.gguf
- []
 
-<Figures/llama对话.png, id=206, 863.3684pt x 505.02965pt>
+[6]
+<Figures/llama对话.png, id=232, 863.3684pt x 505.02965pt>
 File: Figures/llama对话.png Graphic file (type png)
 <use Figures/llama对话.png>
-Package pdftex.def Info: Figures/llama对话.png  used on input line 202.
+Package pdftex.def Info: Figures/llama对话.png  used on input line 268.
 (pdftex.def)             Requested size: 430.31812pt x 251.72047pt.
 
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 221--221
-[]|\OT1/minntx/m/n/12 model[]path,
- []
+[7]
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--221
-\OT1/minntx/m/n/12 n[]gpu[]layers, n[]ctx,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-[]|\OT1/minntx/m/n/12 temperature, top[]p,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-\OT1/minntx/m/n/12 top[]k, re-peat[]penalty,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 225--225
-[]|\OT1/minntx/m/n/12 max[]history, sys-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
-[]|\OT1/minntx/m/n/12 gpu[]enabled,
- []
-
-
-Underfull \hbox (badness 2343) in paragraph at lines 227--227
-\OT1/minntx/m/n/12 max[]gpu[]layers, mem-
- []
-
-
-Overfull \hbox (40.30608pt too wide) in paragraph at lines 237--239
-[]\OT1/ntxtlf/b/n/12 Initialization\OT1/minntx/m/n/12 : Val-i-date model pres-ence; in-stan-ti-ate \OT1/ntxtt/m/n/12 Llama \OT1/minntx/m/n/12 with GPU of-fload-ing (\OT1/ntxtt/m/n/12 n[]gpu[]layers=35\OT1/minntx/m/n/12 ). 
- []
-
-
-
-[7 <./Figures/llama对话.png>]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 256.
-
-
-[8]
-<Figures/llamaGPU.png, id=244, 1004.89714pt x 618.59679pt>
+[8 <./Figures/llama对话.png>]
+<Figures/llamaGPU.png, id=254, 1004.89714pt x 618.59679pt>
 File: Figures/llamaGPU.png Graphic file (type png)
 <use Figures/llamaGPU.png>
-Package pdftex.def Info: Figures/llamaGPU.png  used on input line 322.
+Package pdftex.def Info: Figures/llamaGPU.png  used on input line 326.
 (pdftex.def)             Requested size: 452.9679pt x 278.83794pt.
 
 
-[9]
+[9 <./Figures/llamaGPU.png>]
 
-[10 <./Figures/llamaGPU.png>]
+[10]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 12.0pt on input line 468.
+
 
 [11]
 
-[12]
-
-[13] (5112Report_Group7.aux)
+[12] (5112Report_Group7.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `5112Report_Group7.out' has not changed.
-(rerunfilecheck)             Checksum: 9F8E0CCB1007FBD609DEAD0BFFF26BC2;5905.
+(rerunfilecheck)             Checksum: BA03C977EF43A350A357DF2997A3D2F1;6584.
 Package logreq Info: Writing requests to '5112Report_Group7.run.xml'.
 \openout1 = `5112Report_Group7.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 27196 strings out of 469959
- 513946 string characters out of 5479910
- 1277568 words of memory out of 5000000
- 53574 multiletter control sequences out of 15000+600000
- 667467 words of font info for 125 fonts, out of 8000000 for 9000
+ 27191 strings out of 469959
+ 513949 string characters out of 5479910
+ 1277516 words of memory out of 5000000
+ 53576 multiletter control sequences out of 15000+600000
+ 667030 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,11n,131p,771b,1381s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<D:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><D:/Program Files/MiKTeX/fonts/type1/public/tex-gyre/qtmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/txfonts/txtt.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
-Output written on 5112Report_Group7.pdf (13 pages, 453230 bytes).
+ 83i,8n,131p,771b,2238s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<D:/Program Files/MiKTeX/fonts/type1/public/tex-gyre/qtmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/txfonts/txtt.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
+Output written on 5112Report_Group7.pdf (12 pages, 445789 bytes).
 PDF statistics:
  319 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
- 259 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 75 named destinations out of 1000 (max. 500000)
+ 291 words of extra memory for PDF output out of 10000 (max. 10000000)
 

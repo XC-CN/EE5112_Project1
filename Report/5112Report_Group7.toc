@@ -6,28 +6,33 @@
 \contentsline {section}{\numberline {4}Task 2: Develop Local Dialogue Systems by Using Open-Source LLMs}{5}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Literature Review on Different Categories of LLMs}{5}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Local LLM Platform Implementation}{6}{subsection.4.2}%
-\contentsline {paragraph}{Key components.}{6}{section*.3}%
-\contentsline {paragraph}{Execution flow.}{6}{section*.4}%
-\contentsline {subsection}{\numberline {4.3}Performance Comparison: CPU vs GPU Deployment}{9}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.2.1}System Architecture}{6}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Implementation Details}{6}{subsubsection.4.2.2}%
+\contentsline {paragraph}{Model Configuration}{6}{section*.3}%
+\contentsline {paragraph}{Conversation Management}{7}{section*.4}%
+\contentsline {paragraph}{Data Persistence}{7}{section*.5}%
+\contentsline {subsubsection}{\numberline {4.2.3}Hardware Optimization}{7}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}System Evaluation}{8}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Performance Comparison: CPU vs GPU Deployment}{8}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Comparation of Different Pretrained Models}{10}{subsection.4.4}%
 \contentsline {section}{\numberline {5}Task 3: LLM Performance Evaluation}{10}{section.5}%
 \contentsline {section}{\numberline {6}Task 4: GUI for Local LLM}{10}{section.6}%
 \contentsline {section}{\numberline {7}Task 5: Exploring Multimodal Large Language Models (MLLMs)}{10}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Solution Implementation}{11}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Code Documentation}{11}{subsection.7.2}%
-\contentsline {section}{\numberline {8}Results and Discussion}{11}{section.8}%
-\contentsline {subsection}{\numberline {8.1}System Performance Results}{11}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Task Achievement Summary}{11}{subsection.8.2}%
+\contentsline {subsection}{\numberline {7.1}Solution Implementation}{10}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Code Documentation}{10}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Results and Discussion}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}System Performance Results}{10}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Task Achievement Summary}{10}{subsection.8.2}%
 \contentsline {subsection}{\numberline {8.3}Lessons Learned}{11}{subsection.8.3}%
 \contentsline {section}{\numberline {9}Individual Contributions}{11}{section.9}%
 \contentsline {subsection}{\numberline {9.1}Member 1: Niu Mu}{11}{subsection.9.1}%
 \contentsline {subsection}{\numberline {9.2}Member 2: Wu Zining (A0294373W)}{11}{subsection.9.2}%
 \contentsline {subsection}{\numberline {9.3}Member 3: Zhao Jinqiu}{11}{subsection.9.3}%
-\contentsline {section}{\numberline {10}Conclusion}{12}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Project Objectives Achievement}{12}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Future Work}{12}{subsection.10.2}%
-\contentsline {section}{\numberline {11}References}{12}{section.11}%
+\contentsline {section}{\numberline {10}Conclusion}{11}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Project Objectives Achievement}{11}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Future Work}{11}{subsection.10.2}%
+\contentsline {section}{\numberline {11}References}{11}{section.11}%
 \contentsline {section}{\numberline {12}Appendix}{12}{section.12}%
 \contentsline {subsection}{\numberline {12.1}Code Documentation}{12}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Configuration Files}{13}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}User Manual}{13}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.2}Configuration Files}{12}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}User Manual}{12}{subsection.12.3}%

@@ -375,26 +375,22 @@ INPUT .\Figures\llama对话.png
 INPUT .\Figures\llama对话.png
 INPUT .\Figures\llama对话.png
 INPUT .\Figures\llama对话.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Italic-tlf-ot1.tfm
-INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntxmi.vf
-INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\NewTXMI.tfm
-INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\stxscr.tfm
 INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntx-Italic-tlf-ot1.vf
+INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\NewTXMI.tfm
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Italic-tlf-ot1r.tfm
-INPUT .\Figures\llamaGPU.png
-INPUT .\Figures\llamaGPU.png
-INPUT .\Figures\llamaGPU.png
-INPUT .\Figures\llamaGPU.png
-INPUT .\Figures\llamaGPU.png
-INPUT .\Figures\llamaGPU.png
-INPUT .\Figures\llamaGPU.png
 INPUT 5112Report_Group7.aux
 INPUT .\5112Report_Group7.out
 INPUT .\5112Report_Group7.out
 INPUT 5112Report_Group7.run.xml
 OUTPUT 5112Report_Group7.run.xml
-INPUT D:\Program Files\MiKTeX\fonts\type1\public\newtx\NewTXMI.pfb
-INPUT D:\Program Files\MiKTeX\fonts\type1\public\newtx\NewTXMI.pfb
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\tex-gyre\qtmr.pfb
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\tex-gyre\qtmr.pfb
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\txfonts\txtt.pfb

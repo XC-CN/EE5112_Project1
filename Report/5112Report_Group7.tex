@@ -178,116 +178,120 @@ Recent trends indicate a move towards more efficient and multimodal models, but 
 \subsection{Local LLM Platform Implementation}
 % 本地LLM平台实现
 
-This subsection summarises the local dialogue stack that powers Task~2. Two lightweight Python modules form the core: \texttt{llm\_platform.py} loads the quantised \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} model through \texttt{llama-cpp-python}, while \texttt{dialogue\_system.py} wraps the runtime with conversation management, persistence and a CLI loop. The design favours offline execution, minimal dependencies, and rapid iteration between CPU and GPU backends.
-% 本小节概述了驱动任务2的本地对话栈。两个轻量级Python模块构成其核心：\texttt{llm\_platform.py} 通过 \texttt{llama-cpp-python} 加载量化的 \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} 模型，而 \texttt{dialogue\_system.py} 则封装了运行时，包含对话管理、持久化和命令行交互循环。该设计倾向于离线执行、最小化依赖，并支持在CPU和GPU后端之间快速迭代。
+This subsection presents the implementation of a local dialogue system utilizing the open-source LLM \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf}. The system is designed to facilitate offline, privacy-preserving conversations while maintaining performance efficiency across different hardware configurations.
+% 本小节介绍了利用开源LLM \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} 实现的本地对话系统。该系统旨在促进离线、保护隐私的对话，同时在不同硬件配置上保持性能效率。
 
-\paragraph{Key components.}
-% 关键组件
-\begin{itemize}[leftmargin=1.2em]
-    \item \textbf{Runtime wrapper}: abstracts model loading, sampling strategies, and streaming output so the main flow stays decoupled from the inference engine.
-    % \textbf{运行时封装}：抽象了模型加载、采样策略和流式输出，使主流程与推理引擎解耦。
-    \item \textbf{Dialogue controller}: manages multi-turn history, CLI commands (exit/clear/stats), and JSON transcript persistence.
-    % \textbf{对话控制器}：管理多轮对话历史、命令行命令（退出/清除/统计）以及JSON格式的对话记录持久化。
-    \item \textbf{Hardware adapter}: toggles GPU offload versus CPU mode based on configuration and prepares the required environment variables.
-    % \textbf{硬件适配器}：根据配置切换GPU卸载或CPU模式，并准备所需的环境变量。
+\subsubsection{System Architecture}
+% 系统架构
+
+The local LLM platform consists of two main Python modules: \texttt{llm\_platform.py} and \texttt{dialogue\_system.py}. The architecture follows a modular design approach, separating concerns between model inference and dialogue management to ensure maintainability and extensibility.
+% 本地LLM平台由两个主要Python模块组成：\texttt{llm\_platform.py} 和 \texttt{dialogue\_system.py}。该架构采用模块化设计方法，将模型推理与对话管理分离，以确保可维护性和可扩展性。
+
+\begin{itemize}
+    \item \textbf{LLM Platform Module} (\texttt{llm\_platform.py}): Handles model loading, initialization, and inference operations using the \texttt{llama-cpp-python} library. This module abstracts the underlying model complexities and provides a clean interface for text generation.
+    % \textbf{LLM平台模块}：处理使用 \texttt{llama-cpp-python} 库的模型加载、初始化和推理操作。该模块抽象了底层模型的复杂性，并为文本生成提供了清洁的接口。
+    
+    \item \textbf{Dialogue System Module} (\texttt{dialogue\_system.py}): Manages conversational flow, maintains dialogue history, handles user input/output, and provides conversation persistence functionality.
+    % \textbf{对话系统模块}：管理对话流程、维护对话历史、处理用户输入/输出，并提供对话持久化功能。
 \end{itemize}
 
-\paragraph{Execution flow.}
-% 执行流程
-Each user turn triggers a compact pipeline: (1) log the input and trim conversation history, (2) build an instruction-style context with system/user/assistant roles, (3) call the model via synchronous or streamed generation, and (4) persist the reply in memory and on disk for traceability.
-% 每个用户回合都会触发一个紧凑的流程：(1) 记录输入并修剪对话历史，(2) 使用系统/用户/助手角色构建指令式上下文，(3) 通过同步或流式生成调用模型，以及 (4) 将回复持久化到内存和磁盘以供追溯。
+\subsubsection{Implementation Details}
+% 实现细节
+
+\paragraph{Model Configuration}
+% 模型配置
+The system utilizes the quantized Llama-3.2-3B-Instruct model with Q4\_K\_M quantization to optimize memory usage while maintaining reasonable inference quality. Key configuration parameters include:
+% 系统利用Q4\_K\_M量化的Llama-3.2-3B-Instruct模型，以优化内存使用，同时保持合理的推理质量。关键配置参数包括：
+
+\begin{itemize}
+    \item Context window (\texttt{n\_ctx}): 4096 tokens for extended conversations
+    % 上下文窗口：4096个token用于扩展对话
+    \item GPU layers (\texttt{n\_gpu\_layers}): Configurable based on available hardware
+    % GPU层数：根据可用硬件配置
+    \item Temperature: 0.7 for balanced creativity and consistency
+    % 温度：0.7以平衡创造性和一致性
+    \item Maximum tokens: 512 per response to control output length
+    % 最大token数：每个响应512个token以控制输出长度
+\end{itemize}
+
+\paragraph{Conversation Management}
+% 对话管理
+The dialogue system implements several key features to enhance user experience:
+% 对话系统实现了几个关键功能来增强用户体验：
+
+\begin{enumerate}
+    \item \textbf{Multi-turn History}: Maintains conversation context by preserving up to 6 previous exchanges, ensuring coherent dialogue flow.
+    % \textbf{多轮历史}：通过保留多达6次先前交流来维护对话上下文，确保连贯的对话流程。
+    
+    \item \textbf{Role-based Formatting}: Structures conversations using system, user, and assistant roles following the Llama instruction format.
+    % \textbf{基于角色的格式化}：使用系统、用户和助手角色按照Llama指令格式构建对话。
+    
+    \item \textbf{Streaming Output}: Provides real-time response generation to improve perceived responsiveness.
+    % \textbf{流式输出}：提供实时响应生成以提高感知响应性。
+    
+    \item \textbf{Command Interface}: Supports special commands for conversation management (exit, clear, statistics).
+    % \textbf{命令接口}：支持对话管理的特殊命令（退出、清除、统计）。
+\end{enumerate}
+
+\paragraph{Data Persistence}
+% 数据持久化
+All conversations are automatically saved in JSON format with ISO8601 timestamps in the \texttt{conversations/} directory. This enables:
+% 所有对话都会自动以JSON格式保存，并在 \texttt{conversations/} 目录中使用ISO8601时间戳。这使得：
+
+\begin{itemize}
+    \item Conversation history review and analysis
+    % 对话历史回顾和分析
+    \item Future model evaluation and fine-tuning dataset creation
+    % 未来模型评估和微调数据集创建
+    \item Reproducible experiment tracking
+    % 可重现的实验跟踪
+\end{itemize}
+
+\subsubsection{Hardware Optimization}
+% 硬件优化
+
+The platform supports both CPU and GPU inference modes to accommodate different hardware configurations:
+% 该平台支持CPU和GPU推理模式，以适应不同的硬件配置：
+
+\begin{itemize}
+    \item \textbf{CPU Mode}: Utilizes multi-threading (\texttt{n\_threads=8}) for parallel processing of model computations
+    % \textbf{CPU模式}：利用多线程进行模型计算的并行处理
+    \item \textbf{GPU Mode}: Leverages CUDA acceleration through cuBLAS integration for significantly improved inference speed
+    % \textbf{GPU模式}：通过cuBLAS集成利用CUDA加速，显著提高推理速度
+\end{itemize}
+
+The configuration file (\texttt{config.json}) allows easy switching between deployment modes without code modification, facilitating testing and deployment across different environments.
+% 配置文件允许在不修改代码的情况下轻松切换部署模式，便于在不同环境中进行测试和部署。
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\linewidth]{Figures/llama对话.png}
-    \caption{CPU baseline session captured before enabling GPU acceleration.}
-    % 在启用GPU加速前捕获的CPU基准会话。
+    \caption{Terminal-based dialogue interface showing multi-turn conversation capabilities}
+    % 终端对话界面展示多轮对话能力
     \label{fig:llama_cpu_chat}
 \end{figure}
 
-To keep behaviour reproducible across hardware profiles we maintain a single \texttt{config.json}. The file separates generative, dialogue, model, and hardware knobs so that experiments remain traceable.
-% 为了在不同硬件配置文件上保持行为的可复现性，我们维护一个单一的 \texttt{config.json} 文件。该文件将生成、对话、模型和硬件的参数分开，以便实验保持可追溯性。
+\subsubsection{System Evaluation}
+% 系统评估
 
-\begin{table}[H]
-\centering
-\caption{Configuration Groups and Key Parameters}
-% 配置分组与关键参数
-\label{tab:config_params}
-\begin{tabular}{|l|p{0.26\linewidth}|p{0.5\linewidth}|}
-\hline
-	\textbf{Group} & \textbf{Key Fields} & \textbf{Purpose} \\
-% 分组 & 关键字段 & 目的
-\hline
-Model & model\_path, n\_gpu\_layers, n\_ctx, n\_threads & Load quantized model; balance context length vs memory footprint. \\
-% 模型 & model\_path, n\_gpu\_layers, n\_ctx, n\_threads & 加载量化模型；平衡上下文长度与内存占用。
-Generation & temperature, top\_p, top\_k, repeat\_penalty, max\_tokens & Control diversity, prevent repetition, limit response budget. \\
-% 生成 & temperature, top\_p, top\_k, repeat\_penalty, max\_tokens & 控制多样性、防止重复、限制响应预算。
-Dialogue & max\_history, system\_prompt, streaming, save\_conversations & Maintain conversational coherence and UX features. \\
-% 对话 & max\_history, system\_prompt, streaming, save\_conversations & 保持对话连贯性和用户体验特性。
-Hardware & gpu\_enabled, max\_gpu\_layers, memory\_fraction & Allocate GPU layers and avoid memory oversubscription. \\
-% 硬件 & gpu\_enabled, max\_gpu\_layers, memory\_fraction & 分配GPU层并避免内存超额分配。
-\hline
-\end{tabular}
-\end{table}
+The implemented system successfully fulfills the project requirements by providing:
+% 实现的系统通过提供以下功能成功满足项目要求：
 
-\subsubsection*{Inference Workflow}
-% 推理工作流
-
-\begin{enumerate}[leftmargin=1.2em]
-    \item \textbf{Initialization}: Validate model presence; instantiate \texttt{Llama} with GPU offloading (\texttt{n\_gpu\_layers=35}).
-    % \textbf{初始化}：验证模型是否存在；使用GPU卸载实例化 \texttt{Llama}（\texttt{n\_gpu\_layers=35}）。
-    \item \textbf{Input Capture}: User utterance appended to in-memory history (role-tagged JSON objects).
-    % \textbf{输入捕获}：将用户话语附加到内存中的历史记录（带角色标签的JSON对象）。
-    \item \textbf{Context Assembly}: Select last $k$ exchanges (<=6) + system prompt into structured token template.
-    % \textbf{上下文组装}：选择最近的 $k$ 轮交流（<=6）+ 系统提示，构成结构化的令牌模板。
-    \item \textbf{Generation}: Call synchronous or streaming API; apply sampling constraints and stop tokens.
-    % \textbf{生成}：调用同步或流式API；应用采样约束和停止令牌。
-    \item \textbf{Streaming (Optional)}: UI prints incremental tokens; latency perceived as reduced.
-    % \textbf{流式（可选）}：UI打印增量令牌；感知延迟降低。
-    \item \textbf{Post-processing}: Trim whitespace; append assistant reply to history.
-    % \textbf{后处理}：修剪空白；将助手回复附加到历史记录。
-    \item \textbf{Persistence}: If enabled, serialize pair into conversation JSON (timestamped). 
-    % \textbf{持久化}：如果启用，将对话对序列化为带时间戳的JSON文件。
-\end{enumerate}
-
-\subsubsection*{Streaming Mechanism}
-% 流式机制
-
-The streaming interface wraps the backend iterator, yielding \emph{delta} fragments; the UI layer concatenates them to form the final assistant turn. This improves responsiveness for longer generations and mirrors modern production chat UX. A termination check monitors \texttt{finish\_reason} in the final chunk.
-% 流式接口封装了后端迭代器，产生\emph{增量}片段；UI层将它们连接起来形成最终的助手回合。这提高了长文本生成的响应性，并模仿了现代生产环境中的聊天用户体验。终止检查会监控最后一块中的 \texttt{finish\_reason}。
-
-\subsubsection*{Data Persistence and Reproducibility}
-% 数据持久化与可复现性
-
-Conversations are stored under \texttt{conversations/} using ISO8601 timestamps for auditing. Each file aggregates ordered message tuples preserving role, content, and creation time, enabling later evaluation or fine-tuning dataset curation.
-% 对话使用ISO8601时间戳存储在 \texttt{conversations/} 目录下以供审计。每个文件聚合了有序的消息元组，保留了角色、内容和创建时间，从而为以后的评估或微调数据集的整理提供了可能。
-
-\subsubsection*{Performance Considerations}
-% 性能考量
-
-We adopt Q4\_K\_M quantization to balance memory (\(~3\,GB GPU usage\)) and quality for a consumer-grade 16GB GPU. Streaming reduces perceived latency; selective history truncation prevents context overflow. CPU threads (\texttt{n\_threads=8}) parallelize token probability computation for non-offloaded layers.
-% 我们采用Q4\_K\_M量化，以便在消费级16GB GPU上平衡内存（约3GB GPU使用量）和质量。流式传输减少了感知延迟；选择性的历史截断可防止上下文溢出。CPU线程（\texttt{n\_threads=8}）可并行计算未卸载层的令牌概率。
-
-\subsubsection*{Reliability and Error Handling}
-% 可靠性与错误处理
-
-Model load failures (missing file / incompatible quantization) are trapped with fallback messaging. Generation exceptions during streaming yield an inline error token without aborting the application. Conversation save errors are gracefully warned (non-fatal).
-% 模型加载失败（文件丢失/量化不兼容）会通过回退消息捕获。流式传输过程中的生成异常会产生一个内联错误令牌，而不会中止应用程序。对话保存错误会以警告方式优雅处理（非致命）。
-
-\subsubsection*{Strengths and Limitations}
-% 优势与局限
-
-\begin{itemize}[leftmargin=1.2em]
-    \item \textbf{Strengths}: Offline privacy; modular layering; streaming UX; clean JSON audit trail; hardware-aware configuration.
-    % \textbf{优势}：离线隐私；模块化分层；流式用户体验；清晰的JSON审计跟踪；硬件感知配置。
-    \item \textbf{Limitations}: Single-model runtime (no dynamic model pool); absence of advanced memory (vector retrieval); limited evaluation hooks in current phase.
-    % \textbf{局限}：单模型运行时（无动态模型池）；缺少高级内存（向量检索）；当前阶段评估钩子有限。
-    \item \textbf{Future Work}: Add retrieval-augmented generation, multi-model routing, automated quality metrics, and GUI integration.
-    % \textbf{未来工作}：添加检索增强生成、多模型路由、自动化质量指标和GUI集成。
+\begin{itemize}
+    \item A fully functional terminal-based dialogue interface supporting multi-turn conversations
+    % 功能齐全的终端对话界面，支持多轮对话
+    \item Offline operation ensuring privacy and data security
+    % 离线操作确保隐私和数据安全
+    \item Configurable parameters for different use cases and hardware capabilities
+    % 针对不同用例和硬件功能的可配置参数
+    \item Robust error handling and graceful degradation
+    % 强大的错误处理和优雅降级
+    \item Extensible architecture for future enhancements
+    % 可扩展架构以便未来增强
 \end{itemize}
 
-Overall, the implementation delivers a privacy-preserving, extensible inference substrate suitable for subsequent integration with higher-level dialogue management and evaluation modules in later tasks.
-% 总体而言，该实现提供了一个保护隐私、可扩展的推理基础，适用于后续任务中与更高级别的对话管理和评估模块的集成。
+The system demonstrates practical applicability in scenarios requiring private, local LLM deployment while maintaining reasonable performance and user experience standards.
+% 该系统在需要私有、本地LLM部署的场景中展现了实用性，同时保持了合理的性能和用户体验标准。
 
 \subsection{Performance Comparison: CPU vs GPU Deployment}
 % 性能比较：CPU 与 GPU 部署
