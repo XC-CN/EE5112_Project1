@@ -1,0 +1,37 @@
+{
+    "model_config": {
+        "model_path": "../Llama 3.2 3B/models/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+        "n_ctx": 8192,
+        "n_threads": 12,
+        "n_batch": 512,
+        "rope_freq_base": 500000.0,
+        "seed": -1,
+        "verbose": false
+    },
+    "generation_config": {
+        "temperature": 0.7,
+        "top_p": 0.9,
+        "top_k": 40,
+        "repeat_penalty": 1.05,
+        "max_tokens": 1024,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+    },
+    "dialogue_config": {
+        "system_prompt": "You are Llama-4-Scout, an advanced AI assistant specialized in robotics, human-robot interaction, and engineering applications. Provide detailed, accurate, and technically sound responses with practical insights.",
+        "max_history": 12,
+        "streaming": true,
+        "save_conversations": true,
+        "conversation_dir": "conversations"
+    },
+    "hardware_config": {
+        "gpu_enabled": true,
+        "main_gpu": 0,
+        "n_gpu_layers": -1,
+        "tensor_split": null,
+        "force_gpu_env": true,
+        "flash_attn": true,
+        "use_mlock": true,
+        "use_mmap": true
+    }
+}
