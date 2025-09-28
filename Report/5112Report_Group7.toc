@@ -2,49 +2,44 @@
 \contentsline {section}{\numberline {2}Introduction}{4}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Background}{4}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Project Objectives}{4}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Project Scope}{4}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Task 1: Development Environment Setup}{4}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Python Environment Configuration}{4}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}TensorFlow Platform Familiarization}{5}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Development Tools and Libraries}{5}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Task 2: LLM Platform Development}{5}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Open Source LLM Exploration}{5}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Literature Review on LLM Categories}{5}{subsubsection.4.1.1}%
-\contentsline {paragraph}{Encoder-Decoder Models}{5}{section*.2}%
-\contentsline {paragraph}{Encoder-Only Models}{6}{section*.3}%
+\contentsline {paragraph}{Operational highlights.}{4}{section*.2}%
+\contentsline {paragraph}{Encoder-Only Models}{5}{section*.3}%
 \contentsline {paragraph}{Decoder-Only Models}{6}{section*.4}%
-\contentsline {subsubsection}{\numberline {4.1.2}Comparative Analysis}{7}{subsubsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.3}Recent Trends and Future Directions}{8}{subsubsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.2}Local LLM Platform Implementation}{8}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Comparation of Different Pretrained Models}{11}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Task 3: Dialogue System Development}{11}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Dialogue System Architecture}{11}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Natural Language Processing Components}{12}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Multi-modal Communication}{12}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Dialogue Management}{12}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Task 4: System Integration and Testing}{12}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Component Integration}{12}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}System Testing}{12}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Performance Optimization}{12}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Task 5: LLM Evaluation}{12}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Evaluation Metrics}{12}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Evaluation Framework Implementation}{12}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Performance Analysis}{13}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Solution Implementation}{13}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Code Documentation}{13}{subsection.7.5}%
-\contentsline {section}{\numberline {8}Results and Discussion}{13}{section.8}%
-\contentsline {subsection}{\numberline {8.1}System Performance Results}{13}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Task Achievement Summary}{13}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Lessons Learned}{13}{subsection.8.3}%
-\contentsline {section}{\numberline {9}Individual Contributions}{13}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Member 1: Niu Mu}{13}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Member 2: Wu Zining (A0294373W)}{13}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Member 3: Zhao Jinqiu}{14}{subsection.9.3}%
-\contentsline {section}{\numberline {10}Conclusion}{14}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Project Objectives Achievement}{14}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Future Work}{14}{subsection.10.2}%
-\contentsline {section}{\numberline {11}References}{14}{section.11}%
-\contentsline {section}{\numberline {12}Appendix}{14}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Code Documentation}{14}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Configuration Files}{14}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}User Manual}{14}{subsection.12.3}%
+\contentsline {subsubsection}{\numberline {2.2.1}Comparative Analysis}{6}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Recent Trends and Future Directions}{7}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Local LLM Platform Implementation}{8}{subsection.2.3}%
+\contentsline {paragraph}{Key components.}{8}{section*.6}%
+\contentsline {paragraph}{Execution flow.}{8}{section*.7}%
+\contentsline {subsection}{\numberline {2.4}Performance Comparison: CPU vs GPU Deployment}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Comparation of Different Pretrained Models}{12}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Task 3: Dialogue System Development}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Dialogue System Architecture}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Natural Language Processing Components}{12}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Multi-modal Communication}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Dialogue Management}{12}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Task 4: System Integration and Testing}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Component Integration}{12}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}System Testing}{12}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Performance Optimization}{12}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Task 5: LLM Evaluation}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Evaluation Metrics}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Evaluation Framework Implementation}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Performance Analysis}{13}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Solution Implementation}{13}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Code Documentation}{13}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Results and Discussion}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}System Performance Results}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Task Achievement Summary}{13}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Lessons Learned}{13}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Individual Contributions}{14}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Member 1: Niu Mu}{14}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Member 2: Wu Zining (A0294373W)}{14}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Member 3: Zhao Jinqiu}{14}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Conclusion}{14}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Project Objectives Achievement}{14}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Future Work}{14}{subsection.8.2}%
+\contentsline {section}{\numberline {9}References}{14}{section.9}%
+\contentsline {section}{\numberline {10}Appendix}{14}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Code Documentation}{14}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Configuration Files}{15}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}User Manual}{15}{subsection.10.3}%

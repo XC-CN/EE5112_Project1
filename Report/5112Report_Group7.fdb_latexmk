@@ -1,9 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1758801954.44584 "d:/OneDrive/NUS/EE5112 Human Robot Interaction/Project1/Report/5112Report_Group7.tex" "5112Report_Group7.pdf" "5112Report_Group7" 1758801955.47224 0
-  "5112Report_Group7.aux" 1758801955 7427 bd6d553d0e3228e12f718bb42cf2c94a "pdflatex"
-  "5112Report_Group7.out" 1758801955 8332 1d497c64ea8bd9e2341562b66320ca82 "pdflatex"
-  "5112Report_Group7.tex" 1758801953 34068 388e0ced2a342b82edac82cee6adc775 ""
-  "5112Report_Group7.toc" 1758801955 4346 20a5fb4abd1d6c95c4459c1845fe8afc "pdflatex"
+["pdflatex"] 1759050371.93163 "d:/OneDrive/NUS/EE5112 Human Robot Interaction/Project1/Report/5112Report_Group7.tex" "5112Report_Group7.pdf" "5112Report_Group7" 1759050373.16079 0
+  "5112Report_Group7.aux" 1759050373 7277 ab84501b071310cb1aec277dd8eda691 "pdflatex"
+  "5112Report_Group7.out" 1759050373 6899 59cc5844aeb47ecc60afb5ec39740eeb "pdflatex"
+  "5112Report_Group7.tex" 1759050370 33607 85942b439c509db81d81e5108cce289f ""
+  "5112Report_Group7.toc" 1759050373 3809 0b69004d950f785f31f6746f36d4a1aa "pdflatex"
   "C:/Users/XC/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1758798381 165960 3a7e7642a1b43c3944dd6f0d2ed395b6 ""
   "C:/Users/XC/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1758791502 13138137 94603aed18ee49a2a8725ddccc9df50f ""
   "D:/Program Files/MiKTeX/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1736607166 2083 60e36f8eac802fcaf19eabe2633b406e ""
@@ -139,8 +139,9 @@
   "D:/Program Files/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "D:/Program Files/MiKTeX/tex/latex/xpatch/xpatch.sty" 1585221260 8510 7803f78066c4f9d008405191a4b43073 ""
   "D:/Program Files/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
+  "Figures/llamaGPU.png" 1759049261 230547 b8255ff33658196d978ee89493fada5f ""
   "Figures/llama对话.png" 1758801582 182683 6f14f146762f0f02ff87674e7343bf1b ""
-  "d:/OneDrive/NUS/EE5112 Human Robot Interaction/Project1/Report/5112Report_Group7.tex" 1758801953 34068 388e0ced2a342b82edac82cee6adc775 ""
+  "d:/OneDrive/NUS/EE5112 Human Robot Interaction/Project1/Report/5112Report_Group7.tex" 1759050370 33607 85942b439c509db81d81e5108cce289f ""
   (generated)
   "5112Report_Group7.aux"
   "5112Report_Group7.log"

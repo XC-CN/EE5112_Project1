@@ -308,31 +308,38 @@ INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\txbmiaX.tfm
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1r.tfm
 OUTPUT 5112Report_Group7.toc
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1.tfm
-INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntx-Bold-tlf-ot1.vf
-INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\txbmiaX.tfm
-INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1r.tfm
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ts1ntxtlf.fd
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ts1ntxtlf.fd
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ts1ntxtlf.fd
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\tex-gyre\ts1-qtmr.tfm
-INPUT D:\Program Files\MiKTeX\fonts\enc\dvips\tex-gyre\q-ts1.enc
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ot1ntxtt.fd
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ot1ntxtt.fd
 INPUT D:\Program Files\MiKTeX\tex\latex\newtx\ot1ntxtt.fd
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\txfonts\txtt.tfm
+INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntx-Bold-tlf-ot1.vf
+INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\txbmiaX.tfm
+INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Bold-tlf-ot1r.tfm
+INPUT D:\Program Files\MiKTeX\fonts\enc\dvips\tex-gyre\q-ts1.enc
+INPUT .\Figures\llama对话.png
+INPUT .\Figures\llama对话.png
+INPUT .\Figures\llama对话.png
+INPUT .\Figures\llama对话.png
+INPUT .\Figures\llama对话.png
+INPUT .\Figures\llama对话.png
+INPUT .\Figures\llama对话.png
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Italic-tlf-ot1.tfm
 INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntxmi.vf
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\NewTXMI.tfm
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\stxscr.tfm
 INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntx-Italic-tlf-ot1.vf
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Italic-tlf-ot1r.tfm
-INPUT .\Figures\llama对话.png
-INPUT .\Figures\llama对话.png
-INPUT .\Figures\llama对话.png
-INPUT .\Figures\llama对话.png
-INPUT .\Figures\llama对话.png
-INPUT .\Figures\llama对话.png
-INPUT .\Figures\llama对话.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
+INPUT .\Figures\llamaGPU.png
 INPUT 5112Report_Group7.aux
 INPUT .\5112Report_Group7.out
 INPUT .\5112Report_Group7.out

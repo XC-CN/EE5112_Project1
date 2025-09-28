@@ -117,64 +117,19 @@ The main objectives of this project are:
     % 提供问题发现和解决的实践经验
 \end{enumerate}
 
-\subsection{Project Scope}
-% 项目范围
+\paragraph{Operational highlights.}
+% 运行要点：下面列出本地平台的关键运行行为和设计决策（含中文注释）
+\begin{itemize}[leftmargin=1.2em]
+    \item Streaming is enabled by default so the first token appears almost immediately, minimizing perceived latency.
+    % 流式默认开启：首个 token 几乎立即出现，减少用户感知延迟。
+    \item Conversation history is trimmed to the three most recent turns, preserving context while staying within the \texttt{4096} token window.
+    % 历史截断策略：仅保留最近三轮对话，以兼顾上下文与 4096 token 窗口限制。
+    \item Every exchange is timestamped and stored in \texttt{conversations/}, which simplifies audits and later evaluation.
+    % 对话持久化：每次交互均带时间戳并保存到 \texttt{conversations/}，便于审计与后续评估。
+\end{itemize}
 
-% 项目范围 - 定义项目边界和预期贡献
-% Project scope - Define project boundaries and expected contributions
-
-[Placeholder for project scope content]
-% [项目范围内容占位符]
-
-\section{Task 1: Development Environment Setup}
-% 任务1：开发环境搭建
-
-% 任务1：开发环境搭建 - 熟悉Python包、TensorFlow等工具的使用
-% Task 1: Development Environment Setup - Familiarize with Python packages, TensorFlow and other tools
-
-\subsection{Python Environment Configuration}
-% Python环境配置
-
-% Python环境配置 - 安装和配置必要的Python包
-% Python environment configuration - Installation and configuration of necessary Python packages
-
-[Placeholder for Python environment setup content]
-% [Python环境设置内容占位符]
-
-\subsection{TensorFlow Platform Familiarization}
-% TensorFlow平台熟悉
-
-[Placeholder for TensorFlow familiarization content]
-% [TensorFlow熟悉内容占位符]
-
-\subsection{Development Tools and Libraries}
-% 开发工具和库
-
-[Placeholder for development tools content]
-% [开发工具内容占位符]
-
-\section{Task 2: LLM Platform Development}
-% 任务2：LLM平台开发
-
-\subsection{Open Source LLM Exploration}
-% 开源LLM探索
-
-% 开源LLM探索 - 研究和测试Llama、GLM等开源LLM
-% Open source LLM exploration - Research and test open source LLMs like Llama, GLM
-
-\subsubsection{Literature Review on LLM Categories}
-% 不同类型LLM的文献综述
-
-
-Large Language Models (LLMs) can be categorized into three main architectural paradigms based on their transformer configurations: encoder-decoder, encoder-only, and decoder-only models. Each architecture has distinct characteristics, strengths, and applications in natural language processing tasks.
-% 大型语言模型（LLM）可以根据其transformer配置分为三种主要架构范式：编码器-解码器、仅编码器和仅解码器模型。每种架构都有独特的特征、优势和在自然语言处理任务中的应用。
-
-\paragraph{Encoder-Decoder Models}
-% 编码器-解码器模型
-
-Encoder-decoder models employ a dual-transformer architecture where the encoder processes input sequences to generate contextual representations, while the decoder generates output sequences based on these representations. This architecture is particularly effective for sequence-to-sequence tasks such as machine translation, text summarization, and question answering.
-% 编码器-解码器模型采用双transformer架构，其中编码器处理输入序列以生成上下文表示，而解码器基于这些表示生成输出序列。这种架构特别适用于序列到序列任务，如机器翻译、文本摘要和问答。
-
+Overall, the implementation remains compact yet extensible, allowing higher-level dialogue management or evaluation modules to plug in without touching the inference core.
+% 总体而言，该实现保持紧凑却具可扩展性，可作为后续对话管理或评估模块的基座。
 \textbf{Key Characteristics:}
 % 关键特征：
 \begin{itemize}
@@ -358,35 +313,33 @@ This comprehensive understanding of different LLM architectures provides the fou
 \subsection{Local LLM Platform Implementation}
 % 本地LLM平台实现
 
-This subsection details the design and implementation of our local Large Language Model (LLM) platform developed in Task 2. The platform enables fully offline, multi-turn dialogue with an optimized quantized Llama 3.2 3B Instruct model using the \texttt{llama-cpp-python} backend, supporting streaming token-level generation, context management, and persistent conversation storage.
-% 本小节介绍任务2中本地LLM平台的设计与实现。平台基于 \texttt{llama-cpp-python} 运行量化的 Llama 3.2 3B Instruct 模型，支持完全离线、多轮对话、逐 token 流式输出、上下文管理以及对话持久化存储。
+This subsection summarises the local dialogue stack that powers Task~2. Two lightweight Python modules form the core: \texttt{llm\_platform.py} loads the quantised \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} model through \texttt{llama-cpp-python}, while \texttt{dialogue\_system.py} wraps the runtime with conversation management, persistence and a CLI loop. The design favours offline execution, minimal dependencies, and rapid iteration between CPU and GPU backends.
+% 本小节概述驱动任务2的本地对话栈，强调离线执行、轻量依赖与 CPU/GPU 可切换性。
 
-\subsubsection*{System Architecture}
-% 系统架构
-
-The platform is organized into two core layers: (1) \textbf{LLMPlatform} (model runtime + generation control) and (2) \textbf{DialogueSystem} (session orchestration + persistence). 
-% 平台包含两个核心层：（1）\textbf{LLMPlatform}（模型运行时与生成控制），（2）\textbf{DialogueSystem}（会话编排与持久化）。
-
+\paragraph{Key components.}
 \begin{itemize}[leftmargin=1.2em]
-    \item \textbf{Model Runtime}: Wraps the quantized GGUF model (\texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf}) providing unified load / generate / stream interfaces.  
-    % 模型运行时：封装量化GGUF模型，提供统一加载/生成/流式接口。
-    \item \textbf{Generation Engine}: Applies sampling controls (temperature, top-p, top-k, repeat penalty) and stop-sequence management for safe termination.  
-    % 生成引擎：应用采样控制与停止序列管理。
-    \item \textbf{Context Builder}: Dynamically composes an instruction-style prompt with system, user, assistant roles; trims history (sliding window) to remain within \texttt{n\_ctx}.  
-    % 上下文构建器：动态组装 system/user/assistant 角色提示，采用滑动窗口裁剪历史。
-    \item \textbf{Streaming Layer}: Exposes a Python generator yielding incremental tokens for real-time UX.  
-    % 流式层：通过生成器逐 token 产出，实现实时交互体验。
-    \item \textbf{Persistence Module}: Serializes conversations to JSON with timestamps and metadata (conversation ID).  
-    % 持久化模块：将带时间戳的对话序列化为JSON。
-    \item \textbf{Configuration Loader}: Merges external \texttt{config.json} with safe defaults; separates model, generation, dialogue, and hardware domains.  
-    % 配置加载器：合并外部配置与默认值，分离模型/生成/对话/硬件四类域。
+    \item \textbf{Runtime wrapper}: abstracts model loading, sampling strategies, and streaming output so the main flow stays decoupled from the inference engine.
+    % Runtime 封装
+    \item \textbf{Dialogue controller}: manages multi-turn history, CLI commands (exit/clear/stats), and JSON transcript persistence.
+    % Dialogue 控制器
+    \item \textbf{Hardware adapter}: toggles GPU offload versus CPU mode based on configuration and prepares the required environment variables.
+    % 硬件适配
 \end{itemize}
 
-\subsubsection*{Configuration and Parameterization}
-% 配置与参数化
+\paragraph{Execution flow.}
+Each user turn triggers a compact pipeline: (1) log the input and trim conversation history, (2) build an instruction-style context with system/user/assistant roles, (3) call the model via synchronous or streamed generation, and (4) persist the reply in memory and on disk for traceability.
+% 简述执行流程。
 
-Four configuration groups enable reproducibility and hardware-aware tuning (excerpt from \texttt{config.json}).
-% 四类配置支持可复现与硬件感知调优（摘自 \texttt{config.json}）。
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{Figures/llama对话.png}
+    \caption{CPU baseline session captured before enabling GPU acceleration.}
+    % CPU 基准会话截图，较长的延迟凸显优化空间
+    \label{fig:llama_cpu_chat}
+\end{figure}
+
+To keep behaviour reproducible across hardware profiles we maintain a single \texttt{config.json}. The file separates generative, dialogue, model, and hardware knobs so that experiments remain traceable.
+% 说明配置文件分域维护。
 
 \begin{table}[H]
 \centering
@@ -462,23 +415,44 @@ Model load failures (missing file / incompatible quantization) are trapped with 
     % 未来工作：加入检索增强、多模型路由、自动化质量指标与 GUI 集成。
 \end{itemize}
 
-\subsubsection*{User Interaction Example}
-% 用户交互示例
+Overall, the implementation delivers a privacy-preserving, extensible inference substrate suitable for subsequent integration with higher-level dialogue management and evaluation modules in later tasks.
+% 总体而言，该实现提供一个隐私友好、可扩展的推理底座，为后续任务中的高层对话管理与评估模块集成奠定基础。
 
-Figure~\ref{fig:llama_chat_screenshot} shows a real dialogue example captured from the streaming session.
-% 图~\ref{fig:llama_chat_screenshot} 展示一次真实流式对话示例。
+\subsection{Performance Comparison: CPU vs GPU Deployment}
+% 性能比较：CPU 与 GPU 部署
+
+To quantify the benefit of the dedicated GPU pipeline, we benchmarked identical prompts (	extit{"hello"} and 	extit{"Who are you?"}) on both deployment targets using the same quantized \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} model and configuration. Timing was captured end-to-end from user input to the final token, with streaming enabled in both runs. The GPU test was executed on an RTX 5080 16GB with cuBLAS acceleration, whereas the CPU baseline was collected on the same workstation with GPU offloading disabled.
+% 为量化 GPU 管线带来的收益，我们在 CPU 与 GPU 上使用相同提示词和同一量化模型进行基准测试，记录从输入到生成完成的端到端耗时。
+
+\begin{table}[H]
+    \centering
+    \caption{Inference latency comparison between CPU and GPU backends}
+    % CPU 与 GPU 推理延迟比较
+    \label{tab:cpu_gpu_latency}
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        	extbf{Prompt} & \textbf{CPU latency (s)} & \textbf{GPU latency (s)} & \textbf{Speedup} \\
+        % 提示词 & CPU 延迟 & GPU 延迟 & 加速比
+        \hline
+        hello & 4.90 & 2.44 & 2.0\texttimes{} \\
+        Who are you? & 22.40 & 11.18 & 2.0\texttimes{} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Across both prompts, the GPU path halves the response time while preserving output quality. The reduction primarily stems from mapping transformer layers onto CUDA kernels (\texttt{n\_gpu\_layers = -1}) via \texttt{llama-cpp-python} with \texttt{LLAMA\_CUBLAS=1}, eliminating the CPU bottleneck observed in the baseline. Shorter latency also improves conversational fluidity because streamed tokens begin appearing almost immediately, keeping the user engaged.
+% GPU 方案将耗时缩短约一半，主要得益于使用 cuBLAS 将 transformer 层映射到 GPU，从而消除 CPU 瓶颈。
+
+Figure~\ref{fig:llama_cpu_chat} shows the slower CPU baseline, while Figure~\ref{fig:llama_gpu_chat} captures the accelerated GPU session that produced the timings in Table~\ref{tab:cpu_gpu_latency}.
+% 图~\ref{fig:llama_cpu_chat} 展示 CPU 基线，图~\ref{fig:llama_gpu_chat} 对应 GPU 加速会话。
 
 \begin{figure}[H]
     \centering
-    % 注意：若编译器无法处理中文文件名，可将图片重命名为 llama_chat.png 并更新路径。
-    \includegraphics[width=1\linewidth]{Figures/llama对话.png}
-    \caption{Example streaming dialogue with local Llama 3.2 3B model.}
-    % 使用本地 Llama 3.2 3B 模型的流式对话示例
-    \label{fig:llama_chat_screenshot}
+    \includegraphics[width=1\linewidth]{Figures/llamaGPU.png}
+    \caption{Streaming dialogue captured during the GPU benchmark run.}
+    % GPU 基准运行时捕获的流式对话截图
+    \label{fig:llama_gpu_chat}
 \end{figure}
-
-Overall, the implementation delivers a privacy-preserving, extensible inference substrate suitable for subsequent integration with higher-level dialogue management and evaluation modules in later tasks.
-% 总体而言，该实现提供一个隐私友好、可扩展的推理底座，为后续任务中的高层对话管理与评估模块集成奠定基础。
 
 \subsection{Comparation of Different Pretrained Models}
 % 不同预训练模型的比较

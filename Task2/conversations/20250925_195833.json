@@ -21,6 +21,16 @@
       "role": "assistant",
       "content": "I'm an artificial intelligence assistant, designed to provide helpful and informative responses. I don't have a personal identity or emotions, but my goal is to assist users like you with their questions and tasks.\n\nI can help with a wide range of topics, from providing information on various subjects to offering suggestions and ideas for projects or problems. I'm constantly learning and improving, so please bear with me if I make any mistakes!\n\nWhat can I help you with today?",
       "timestamp": "2025-09-25T19:59:18.321866"
+    },
+    {
+      "role": "user",
+      "content": "和我说中文",
+      "timestamp": "2025-09-25T20:45:17.358696"
+    },
+    {
+      "role": "assistant",
+      "content": "你好！\n\n你想和我说什么中文？\n（You want to talk Chinese with me？）\n\n我可以帮助你翻译或回答你的问题。",
+      "timestamp": "2025-09-25T20:45:17.358696"
     }
   ]
 }
