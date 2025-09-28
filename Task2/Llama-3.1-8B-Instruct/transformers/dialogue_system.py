@@ -172,8 +172,6 @@ class TransformersDialogue:
             default_cache = self.base_dir / "hf_cache"
             default_cache.mkdir(parents=True, exist_ok=True)
             self.cache_dir = default_cache
-        cache_root = Path(self.cache_dir) if self.cache_dir else None
-
         # 加载分词器，若在线访问被拒绝则尝试读取本地缓存
         tokenizer_kwargs: Dict[str, Any] = {
             "use_fast": True,
