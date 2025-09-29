@@ -13,3 +13,21 @@ Task2/Llama-3.1-8B-Instruct/transformers/conversations_transformers/*
 Task2/Llama-3.1-8B-Instruct/transformers/__pycache__/
 Task2/Llama-3.1-8B-Instruct/__pycache__/
 **/.env
+# LaTeX build artifacts (keep .tex, .pdf and images tracked)
+Report/**/*.aux
+Report/**/*.bbl
+Report/**/*.bcf
+Report/**/*.blg
+Report/**/*.fdb_latexmk
+Report/**/*.fls
+Report/**/*.log
+Report/**/*.out
+Report/**/*.run.xml
+Report/**/*.synctex.gz
+Report/**/*.toc
+Report/**/*.lof
+Report/**/*.lot
+Report/**/*.nav
+Report/**/*.snm
+Report/**/*.vrb
+
