@@ -1,4 +1,4 @@
-"""Minimal stub of pyairports to satisfy outlines optional import."""
+"""Minimal pyairports stub for outlines guided decoding."""
 
 from .airports import AIRPORT_LIST
 

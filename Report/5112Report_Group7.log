@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.9.25)  28 SEP 2025 21:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.9.25)  29 SEP 2025 13:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1029,64 +1029,66 @@ LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 
 
 [5{D:/Program Files/MiKTeX/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
-LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 181.
+LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 180.
  (D:\Program Files\MiKTeX\tex/latex/newtx\ot1ntxtt.fd
 File: ot1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
-(Font)              scaled to size 12.0pt on input line 181.
+(Font)              scaled to size 12.0pt on input line 180.
 
+Overfull \hbox (46.37502pt too wide) in paragraph at lines 180--182
+\OT1/minntx/m/n/12 We de-ploy a com-pact lo-cal di-a-logue stack around the quan-tized \OT1/ntxtt/m/n/12 Llama-3.2-3B-Instruct-Q4[]K[]M.gguf
+ []
 
-[6]
-<Figures/llama对话.png, id=232, 863.3684pt x 505.02965pt>
+<Figures/llama对话.png, id=212, 863.3684pt x 505.02965pt>
 File: Figures/llama对话.png Graphic file (type png)
 <use Figures/llama对话.png>
-Package pdftex.def Info: Figures/llama对话.png  used on input line 268.
+Package pdftex.def Info: Figures/llama对话.png  used on input line 197.
 (pdftex.def)             Requested size: 430.31812pt x 251.72047pt.
 
 
-[7]
+[6]
 
-[8 <./Figures/llama对话.png>]
-<Figures/llamaGPU.png, id=254, 1004.89714pt x 618.59679pt>
+[7 <./Figures/llama对话.png>]
+<Figures/llamaGPU.png, id=229, 1004.89714pt x 618.59679pt>
 File: Figures/llamaGPU.png Graphic file (type png)
 <use Figures/llamaGPU.png>
-Package pdftex.def Info: Figures/llamaGPU.png  used on input line 326.
+Package pdftex.def Info: Figures/llamaGPU.png  used on input line 245.
 (pdftex.def)             Requested size: 452.9679pt x 278.83794pt.
 
 
-[9 <./Figures/llamaGPU.png>]
+[8 <./Figures/llamaGPU.png>]
+
+[9]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 12.0pt on input line 387.
+
 
 [10]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 468.
 
-
-[11]
-
-[12] (5112Report_Group7.aux)
+[11] (5112Report_Group7.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `5112Report_Group7.out' has not changed.
-(rerunfilecheck)             Checksum: BA03C977EF43A350A357DF2997A3D2F1;6584.
+(rerunfilecheck)             Checksum: 54135721BE164DCE876D3BEDB9081791;6183.
 Package logreq Info: Writing requests to '5112Report_Group7.run.xml'.
 \openout1 = `5112Report_Group7.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 27191 strings out of 469959
- 513949 string characters out of 5479910
+ 27177 strings out of 469959
+ 513766 string characters out of 5479910
  1277516 words of memory out of 5000000
- 53576 multiletter control sequences out of 15000+600000
+ 53573 multiletter control sequences out of 15000+600000
  667030 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,8n,131p,771b,2238s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,8n,131p,771b,2240s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/Program Files/MiKTeX/fonts/type1/public/tex-gyre/qtmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/txfonts/txtt.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
-Output written on 5112Report_Group7.pdf (12 pages, 445789 bytes).
+Output written on 5112Report_Group7.pdf (11 pages, 442556 bytes).
 PDF statistics:
- 319 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
- 291 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 291 PDF objects out of 1000 (max. 8388607)
+ 64 named destinations out of 1000 (max. 500000)
+ 267 words of extra memory for PDF output out of 10000 (max. 10000000)
 

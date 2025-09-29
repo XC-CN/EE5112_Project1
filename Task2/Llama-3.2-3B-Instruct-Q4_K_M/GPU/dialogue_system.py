@@ -40,13 +40,13 @@ class DialogueSystem:
             with path.open("r", encoding="utf-8") as handle:
                 return json.load(handle)
         except FileNotFoundError:
-            print(f"⚠️  Config file '{path}' not found. Using platform defaults.")
+            print(f"[WARN]  Config file '{path}' not found. Using platform defaults.")
             return LLMPlatform().config
         except json.JSONDecodeError as exc:
-            print(f"⚠️  Invalid JSON in '{path}': {exc}. Using platform defaults.")
+            print(f"[WARN]  Invalid JSON in '{path}': {exc}. Using platform defaults.")
             return LLMPlatform().config
         except Exception as exc:  # pragma: no cover - defensive
-            print(f"⚠️  Failed to load config '{path}': {exc}. Using platform defaults.")
+            print(f"[WARN]  Failed to load config '{path}': {exc}. Using platform defaults.")
             return LLMPlatform().config
 
     # ------------------------------------------------------------------
@@ -60,10 +60,10 @@ class DialogueSystem:
             self.platform = LLMPlatform(self.config, workspace_root=self.base_dir)
             if not self.platform.load_model():
                 return False
-            print("✅ Dialogue system initialised with GPU acceleration.")
+            print("[OK] Dialogue system initialised with GPU acceleration.")
             return True
         except Exception as exc:  # pragma: no cover - defensive logging
-            print(f"❌ Failed to initialise dialogue system: {exc}")
+            print(f"[ERROR] Failed to initialise dialogue system: {exc}")
             return False
 
     def _ensure_conversation_dir(self) -> None:
@@ -106,7 +106,7 @@ class DialogueSystem:
             return
 
         info = self.platform.get_model_info()
-        print("\n📊 Conversation statistics")
+        print("\n[STATS] Conversation statistics")
         print(f"Model: {Path(info['model_path']).name}")
         print(f"Messages in buffer: {info['conversation_length']}")
         print(f"GPU enabled: {info['hardware_config'].get('gpu_enabled', True)}")
@@ -147,18 +147,18 @@ class DialogueSystem:
             with conv_file.open("w", encoding="utf-8") as handle:
                 json.dump(conversation, handle, ensure_ascii=False, indent=2)
         except Exception as exc:  # pragma: no cover - defensive logging
-            print(f"⚠️  Failed to save conversation step: {exc}")
+            print(f"[WARN]  Failed to save conversation step: {exc}")
 
     # ------------------------------------------------------------------
     # Interactive loop
     # ------------------------------------------------------------------
     def interactive_mode(self) -> None:
         if not self.platform:
-            print("❌ Platform not initialised.")
+            print("[ERROR] Platform not initialised.")
             return
 
         streaming_enabled = bool(self.platform.dialogue_config.get("streaming", False))
-        print("\n🤖 Dialogue system ready (GPU mode)")
+        print("\n[BOT] Dialogue system ready (GPU mode)")
         print("Commands: 'exit' to quit, 'clear' to reset history, 'stats' for info")
         if streaming_enabled:
             print("Streaming mode enabled: tokens will appear in real time.")
@@ -166,12 +166,12 @@ class DialogueSystem:
 
         while True:
             try:
-                user_input = input("\n👤 You: ").strip()
+                user_input = input("\n[USER] You: ").strip()
 
                 if not user_input:
                     continue
                 if user_input.lower() == "exit":
-                    print("👋 Bye!")
+                    print("[USER] Bye!")
                     break
                 if user_input.lower() == "clear":
                     self.clear_conversation()
@@ -182,19 +182,19 @@ class DialogueSystem:
 
                 start = time.perf_counter()
                 if streaming_enabled:
-                    print("🤖 Assistant: ", end="", flush=True)
+                    print("[BOT] Assistant: ", end="", flush=True)
                     response = self.stream_chat(user_input)
                     print()
                 else:
                     response = self.chat(user_input)
-                    print(f"🤖 Assistant: {response}")
+                    print(f"[BOT] Assistant: {response}")
                 elapsed = time.perf_counter() - start
-                print(f"⏱️  Elapsed: {elapsed:.2f}s")
+                print(f"[TIMER]  Elapsed: {elapsed:.2f}s")
             except KeyboardInterrupt:
-                print("\n👋 Interrupted by user. Bye!")
+                print("\n[USER] Interrupted by user. Bye!")
                 break
             except Exception as exc:
-                print(f"❌ Error during interaction: {exc}")
+                print(f"[ERROR] Error during interaction: {exc}")
 
 
 # ----------------------------------------------------------------------

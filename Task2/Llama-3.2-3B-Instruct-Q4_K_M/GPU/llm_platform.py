@@ -126,7 +126,7 @@ class LLMPlatform:
             return True
 
         if not self.model_path.exists():
-            print(f"❌ Model not found at {self.model_path}")
+            print(f"[ERROR] Model not found at {self.model_path}")
             return False
 
         self._prepare_environment()
@@ -134,17 +134,17 @@ class LLMPlatform:
         try:
             llama_kwargs = self._build_llama_kwargs()
 
-            print(f"📦 Loading model from {llama_kwargs['model_path']}")
-            print("⚙️  GPU acceleration enabled" if self.hardware_config.get("gpu_enabled", True) else "⚙️  Running on CPU")
+            print(f"[INFO] Loading model from {llama_kwargs['model_path']}")
+            print("[INFO]  GPU acceleration enabled" if self.hardware_config.get("gpu_enabled", True) else "[INFO]  Running on CPU")
 
             start = time.perf_counter()
             self.llm = Llama(**llama_kwargs)
             elapsed = time.perf_counter() - start
-            print(f"✅ Model ready in {elapsed:.2f}s")
+            print(f"[OK] Model ready in {elapsed:.2f}s")
             return True
         except TypeError as exc:
             unexpected = str(exc)
-            print(f"⚠️  Parameter mismatch when creating Llama instance: {unexpected}")
+            print(f"[WARN]  Parameter mismatch when creating Llama instance: {unexpected}")
             print("   Falling back to minimal parameter set.")
             minimal_kwargs = {
                 "model_path": str(self.model_path),
@@ -156,14 +156,14 @@ class LLMPlatform:
             }
             try:
                 self.llm = Llama(**minimal_kwargs)
-                print("✅ Model ready with fallback parameters.")
+                print("[OK] Model ready with fallback parameters.")
                 return True
             except Exception as inner_exc:
-                print(f"❌ Failed to load model after fallback: {inner_exc}")
+                print(f"[ERROR] Failed to load model after fallback: {inner_exc}")
                 self.llm = None
                 return False
         except Exception as exc:  # pragma: no cover - defensive logging
-            print(f"❌ Failed to load model: {exc}")
+            print(f"[ERROR] Failed to load model: {exc}")
             self.llm = None
             return False
 
@@ -292,7 +292,7 @@ class LLMPlatform:
     # ------------------------------------------------------------------
     def clear_history(self) -> None:
         self.conversation_history.clear()
-        print("🧹 Conversation history cleared.")
+        print("[INFO] Conversation history cleared.")
 
     def get_model_info(self) -> Dict[str, Any]:
         status = "loaded" if self.llm else "not_loaded"

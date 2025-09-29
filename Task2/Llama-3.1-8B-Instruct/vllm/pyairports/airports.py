@@ -1,7 +1,6 @@
-"""Simplified airport dataset placeholder used for outlines."""
+"""Simplified airport dataset placeholder used by outlines."""
 
-# outlines expects AIRPORT_LIST to exist; real package ships many records.
-# Provide a minimal placeholder so the dependency can import successfully.
+# outlines 只需要 AIRPORT_LIST 常量存在即可；这里提供空列表占位。
 AIRPORT_LIST = []
 
 __all__ = ["AIRPORT_LIST"]
