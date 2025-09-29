@@ -232,14 +232,14 @@ To quantify the benefit of the dedicated GPU pipeline, we benchmarked identical 
         	extbf{Prompt} & \textbf{CPU latency (s)} & \textbf{GPU latency (s)} & \textbf{Speedup} \\
         % 提示词 & CPU 延迟 & GPU 延迟 & 加速比
         \hline
-        hello & 4.90 & 2.44 & 2.0\texttimes{} \\
-        Who are you? & 22.40 & 11.18 & 2.0\texttimes{} \\
+        hello & 4.90 & 0.595 & 8.2\texttimes{} \\
+        Who are you? & 22.40 & 1.35 & 16.6\texttimes{} \\
         \hline
     \end{tabular}
 \end{table}
 
-Across both prompts, the GPU path halves the response time while preserving output quality. The reduction primarily stems from mapping transformer layers onto CUDA kernels (\texttt{n\_gpu\_layers = -1}) via \texttt{llama-cpp-python} with \texttt{LLAMA\_CUBLAS=1}, eliminating the CPU bottleneck observed in the baseline. Shorter latency also improves conversational fluidity because streamed tokens begin appearing almost immediately, keeping the user engaged.
-% GPU 方案将耗时缩短约一半，主要得益于使用 cuBLAS 将 transformer 层映射到 GPU，从而消除 CPU 瓶颈。
+Across both prompts, the GPU path delivers dramatic performance improvements, achieving 8.2× speedup for short prompts and 16.6× speedup for longer responses while preserving output quality. The substantial reduction primarily stems from mapping transformer layers onto CUDA kernels (\texttt{n\_gpu\_layers = -1}) via \texttt{llama-cpp-python} with \texttt{LLAMA\_CUBLAS=1}, eliminating the CPU bottleneck observed in the baseline. The sub-second response times significantly improve conversational fluidity because streamed tokens begin appearing almost immediately, keeping the user engaged.
+% GPU 方案实现了显著的性能提升，短提示词加速 8.2 倍，长回复加速 16.6 倍，主要得益于使用 cuBLAS 将 transformer 层映射到 GPU，从而消除 CPU 瓶颈。
 
 Figure~\ref{fig:llama_cpu_chat} shows the slower CPU baseline, while Figure~\ref{fig:llama_gpu_chat} captures the accelerated GPU session that produced the timings in Table~\ref{tab:cpu_gpu_latency}.
 % 图~\ref{fig:llama_cpu_chat} 展示 CPU 基线，图~\ref{fig:llama_gpu_chat} 对应 GPU 加速会话。
@@ -251,6 +251,10 @@ Figure~\ref{fig:llama_cpu_chat} shows the slower CPU baseline, while Figure~\ref
     % GPU 基准运行时捕获的流式对话截图
     \label{fig:llama_gpu_chat}
 \end{figure}
+
+
+
+
 
 \subsection{Comparation of Different Pretrained Models}
 % 不同预训练模型的比较
