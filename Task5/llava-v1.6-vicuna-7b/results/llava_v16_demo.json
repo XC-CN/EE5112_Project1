@@ -1,0 +1,17 @@
+{
+  "model_id": "llava-hf/llava-v1.6-vicuna-7b-hf",
+  "device": "cuda",
+  "image_path": "data\\demo_scene.jpg",
+  "caption_prompt": "Provide a concise caption for this image.",
+  "caption_response": "A cat with orange fur and yellow eyes.",
+  "conversation": [
+    {
+      "user": "What activity are the cats engaged in?",
+      "assistant": "The cats are engaged in a typical feline activity, such as playing or grooming themselves."
+    },
+    {
+      "user": "Mention two details about their surroundings.",
+      "assistant": "The cats are sitting on a surface that appears to be a concrete floor, and there are red items in the background, which could be part of a setting or a decorative element."
+    }
+  ]
+}
