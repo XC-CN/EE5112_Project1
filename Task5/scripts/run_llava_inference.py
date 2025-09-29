@@ -7,8 +7,8 @@ from transformers import AutoProcessor, LlavaForConditionalGeneration
 from PIL import Image
 
 MODEL_ID = "llava-hf/llava-interleave-qwen-0.5b-hf"
-DEVICE = "cpu"
-DTYPE = torch.float32
+DEVICE = "cuda"
+DTYPE = torch.float16
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 RESULTS_DIR = Path(__file__).resolve().parent.parent / "results"
 
@@ -41,7 +41,13 @@ class LlavaRunner:
             images=images,
             return_tensors="pt",
         )
-        inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
+        new_inputs = {}
+        for k, v in inputs.items():
+            tensor = v.to(DEVICE)
+            if tensor.dtype in (torch.float32, torch.float64):
+                tensor = tensor.to(DTYPE)
+            new_inputs[k] = tensor
+        inputs = new_inputs
         output = self.model.generate(
             **inputs,
             max_new_tokens=max_new_tokens,

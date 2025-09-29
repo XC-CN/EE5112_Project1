@@ -1,17 +1,17 @@
 {
   "model_id": "llava-hf/llava-interleave-qwen-0.5b-hf",
-  "device": "cpu",
+  "device": "cuda",
   "image_path": "data\\demo_scene.jpg",
   "caption_prompt": "Provide a concise caption for this image.",
   "caption_response": "A cat with orange fur and yellow eyes.",
   "conversation": [
     {
       "user": "What activity are the cats engaged in?",
-      "assistant": "The cats are engaged in different activities, but they are all looking at the camera. One cat is looking directly at the camera, while the other two cats are looking at something in the distance."
+      "assistant": "The cats are engaged in a typical activity of sitting and looking at the camera, which is a common behavior for cats when they are engaged in activities such as grooming, play, or observing their surroundings."
     },
     {
       "user": "Mention two details about their surroundings.",
-      "assistant": "The cats are in a room with a red carpet, which suggests that they might be indoors. The room has a tiled floor, and there is a red object in the background that could be a carpet or a piece of furniture."
+      "assistant": "The cats are sitting on a surface that appears to be a paved area, which could be a walkway or a garden area. The environment looks calm and quiet, which is typical for cats to enjoy."
     }
   ]
 }
