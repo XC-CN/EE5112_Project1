@@ -26,7 +26,7 @@ class LlavaRunner:
             MODEL_ID,
             trust_remote_code=True,
         )
-        print("[INFO] Loading model … (首次加载可能较慢)")
+        print("[INFO] Loading model … (First load may be slow)")
         self.model = LlavaForConditionalGeneration.from_pretrained(
             MODEL_ID,
             torch_dtype=self.dtype,
@@ -82,14 +82,14 @@ class LlavaRunner:
         history: List[dict] = []
         image_attached = False
 
-        print("\n[INFO] 进入对话模式。输入内容后回车提问，输入 `exit` / `quit` 结束。\n")
+        print("\n[INFO] Entering conversation mode. Enter content and press enter to ask, enter `exit` / `quit` to end.\n")
         turn = 1
         while True:
-            user_input = input(f"[用户] 第{turn}轮问题: ").strip()
+            user_input = input(f"[User] Question {turn}: ").strip()
             if not user_input:
                 continue
             if user_input.lower() in {"exit", "quit", "bye"}:
-                print("[系统] 已结束对话。")
+                print("[System] Conversation ended.")
                 break
 
             content = [{"type": "text", "text": user_input}]
@@ -104,7 +104,7 @@ class LlavaRunner:
                 max_new_tokens=max_new_tokens,
                 temperature=temperature,
             )
-            print(f"[助手] {reply}\n")
+            print(f"[Assistant] {reply}\n")
 
             messages.append(
                 {
@@ -122,18 +122,18 @@ class LlavaRunner:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="LLaVA 多轮图文对话 (GPU 优先)")
+    parser = argparse.ArgumentParser(description="LLaVA Multi-turn Image-Text Conversation (GPU Priority)")
     parser.add_argument(
         "--image",
         type=str,
-        help="要使用的图片路径，默认从 data 目录互动选择",
+        help="Path to the image to use, default to interactively select from data directory",
     )
     parser.add_argument("--max-new-tokens", type=int, default=256)
     parser.add_argument("--temperature", type=float, default=0.3)
     parser.add_argument(
         "--save",
         action="store_true",
-        help="保存会话记录到 results 目录",
+        help="Save conversation records to results directory",
     )
     return parser.parse_args()
 
@@ -148,27 +148,27 @@ def select_image_from_data_dir() -> Path:
     )
     if not candidates:
         raise FileNotFoundError(
-            "data 目录下未找到图片，请使用 --image 指定路径或先放置图片。"
+            "No images found in data directory, please use --image to specify path or place images first."
         )
 
-    print("[INFO] 请选择要使用的图片：")
+    print("[INFO] Please select the image to use:")
     for idx, path in enumerate(candidates, start=1):
         rel = path.relative_to(DATA_DIR.parent)
         print(f"  {idx:>2}: {rel}")
     while True:
-        choice = input("请输入序号 (或直接输入完整路径): ").strip()
+        choice = input("Please enter the number (or directly enter the full path): ").strip()
         if not choice:
             continue
         if choice.isdigit():
             index = int(choice)
             if 1 <= index <= len(candidates):
                 return candidates[index - 1]
-            print("[WARN] 序号超出范围，请重新输入。")
+            print("[WARN] Number out of range, please re-enter.")
             continue
         candidate = Path(choice).expanduser()
         if candidate.is_file():
             return candidate
-        print("[WARN] 无法识别的路径，请重新输入。")
+        print("[WARN] Unrecognized path, please re-enter.")
 
 
 def main() -> None:
@@ -184,11 +184,11 @@ def main() -> None:
         sys.exit(1)
 
     if not image_path.exists():
-        print(f"[ERROR] 图片不存在: {image_path}")
+        print(f"[ERROR] Image does not exist: {image_path}")
         sys.exit(1)
 
     image = Image.open(image_path).convert("RGB")
-    print(f"[INFO] 已加载图片: {image_path}")
+    print(f"[INFO] Image loaded: {image_path}")
 
     runner = LlavaRunner()
     history = runner.interactive_chat(
@@ -211,7 +211,7 @@ def main() -> None:
         output_path = RESULTS_DIR / f"llava_chat_{timestamp}.json"
         with output_path.open("w", encoding="utf-8") as fp:
             json.dump(record, fp, ensure_ascii=False, indent=2)
-        print(f"[INFO] 对话记录已保存到: {output_path}")
+        print(f"[INFO] Conversation record saved to: {output_path}")
 
 
 if __name__ == "__main__":

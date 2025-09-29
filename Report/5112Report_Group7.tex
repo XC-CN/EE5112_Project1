@@ -507,12 +507,74 @@ Traditional LLMs employ sequential processing with linear pipeline: tokenization
 
 Traditional LLMs use single-task optimization with established language modeling objectives. MLLMs face complex multi-objective optimization, balancing learning across modalities. Applications expand from text-centric tasks (summarization, code generation) to cross-modal capabilities (visual question answering, image captioning, multimodal dialogue systems).
 
+\subsection{LLaVA Model Performance Evaluation}
+% LLaVA模型性能评估
 
-\subsection{Deployment of the MMLLMs}
-% 记录多模态模型部署的详细过程
+To demonstrate practical MLLM capabilities, we deployed the \texttt{llava-interleave-qwen-0.5b-hf} model from the LLaVA Model Zoo and evaluated its performance across two representative multimodal tasks: image captioning and visual question answering. This compact 0.5B parameter variant provides an efficient balance between computational requirements and multimodal understanding capabilities.
+% 为了展示实用的MLLM能力，我们部署了来自LLaVA模型库的llava-interleave-qwen-0.5b-hf模型，并在两个代表性的多模态任务上评估其性能：图像描述和视觉问答。
 
+\subsubsection{Model Architecture and Deployment}
+% 模型架构和部署
 
+The LLaVA-Interleave-Qwen-0.5B model integrates a vision transformer encoder with the Qwen language model backbone, enabling seamless processing of interleaved image-text sequences. The deployment utilized the Hugging Face Transformers framework with specialized configuration for multimodal inference, supporting both image captioning and conversational visual analysis.
+% LLaVA-Interleave-Qwen-0.5B模型集成了视觉transformer编码器与Qwen语言模型主干，支持交错图像-文本序列的无缝处理。
 
+\subsubsection{Image Captioning Performance}
+% 图像描述性能
+
+We evaluated the model's image captioning capabilities using an equestrian scene featuring a rider on horseback (Figure~\ref{fig:knight_horse_image}). The model was tasked with generating detailed descriptions that capture both visual elements and contextual understanding.
+% 我们使用一个骑士骑马的马术场景评估了模型的图像描述能力。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/knight with horse.png}
+    \caption{Equestrian scene used for image captioning evaluation: rider in formal attire on a brown horse in an outdoor arena}
+    % 用于图像描述评估的马术场景：穿着正装的骑手在户外竞技场骑棕色马匹
+    \label{fig:knight_horse_image}
+\end{figure}
+
+The model demonstrated strong visual comprehension, accurately identifying key elements including the rider's formal black riding attire, the horse's brown coat with white markings, the outdoor arena setting with wooden fencing, and the overall equestrian context. The generated description exhibited both detailed visual recognition and appropriate contextual interpretation, showcasing the model's ability to process complex visual scenes and generate coherent natural language descriptions.
+% 模型展现了强大的视觉理解能力，准确识别了包括骑手的黑色正装、马匹的棕色毛色和白色斑纹、带木栅栏的户外竞技场环境等关键元素。
+
+\subsubsection{Interactive Visual Question Answering}
+% 交互式视觉问答
+
+Beyond static captioning, we conducted interactive dialogue sessions to evaluate the model's visual question answering capabilities and conversational coherence. Figure~\ref{fig:llava_conversation} demonstrates a multi-turn conversation where the model successfully engaged in contextual dialogue about the image content.
+% 除了静态描述，我们进行了交互式对话会话来评估模型的视觉问答能力和对话连贯性。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Figures/多模态对话.png}
+    \caption{Interactive dialogue session with LLaVA model showing multi-turn visual question answering and story generation capabilities}
+    % 与LLaVA模型的交互对话会话，展示多轮视觉问答和故事生成能力
+    \label{fig:llava_conversation}
+\end{figure}
+
+The conversation transcript reveals several key capabilities:
+% 对话记录显示了几个关键能力：
+
+\begin{enumerate}
+    \item \textbf{Detailed Visual Analysis}: The model provided comprehensive scene description, identifying the person's attire (black riding suit with helmet), horse characteristics (brown with white blaze and mane), and environmental context (farm or equestrian center with trees and fence).
+    % 详细的视觉分析：模型提供了全面的场景描述
+    
+    \item \textbf{Creative Narrative Generation}: When prompted to create a story, the model generated a coherent narrative about "Lily," demonstrating its ability to synthesize visual information with creative storytelling, including character development and emotional context.
+    % 创意叙事生成：当被要求创作故事时，模型生成了关于"Lily"的连贯叙事
+    
+    \item \textbf{Contextual Dialogue Maintenance}: The model maintained conversational context across multiple turns, appropriately referencing previous interactions and building upon established narrative elements.
+    % 上下文对话维护：模型在多轮对话中保持了对话上下文
+\end{enumerate}
+
+\subsubsection{Performance Assessment and Limitations}
+% 性能评估和局限性
+
+The LLaVA-Interleave-Qwen-0.5B model demonstrates robust multimodal capabilities despite its compact size. Strengths include accurate object recognition, spatial relationship understanding, and coherent text generation. The model successfully bridged visual perception with linguistic expression, generating contextually appropriate responses that demonstrate genuine understanding rather than superficial pattern matching.
+% LLaVA-Interleave-Qwen-0.5B模型尽管体积紧凑，但展现了强大的多模态能力。
+
+However, certain limitations emerged during evaluation. The model occasionally exhibited minor factual inconsistencies in fine-grained details and showed some tendency toward verbose responses that could benefit from more concise expression. Additionally, while the creative storytelling capability is impressive, the generated narratives sometimes lack deeper thematic complexity compared to larger models.
+% 然而，在评估过程中也出现了某些局限性，如在细粒度细节上偶尔出现轻微的事实不一致。
+
+The successful deployment and evaluation of this MLLM variant demonstrates the practical viability of multimodal systems for real-world applications, providing a foundation for future development in human-robot interaction scenarios where visual understanding and natural language communication must seamlessly integrate.
+% 该MLLM变体的成功部署和评估证明了多模态系统在实际应用中的可行性。
 
 
 \section{Results and Discussion}
