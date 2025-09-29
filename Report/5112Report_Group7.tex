@@ -219,7 +219,7 @@ Finally, we quantized Llama-3.2-3B to Q4\_K\_M and served it through llama.cpp. 
 \subsection{Performance Comparison: CPU vs GPU Deployment}
 % 性能比较：CPU 与 GPU 部署
 
-To quantify the benefit of the dedicated GPU pipeline, we benchmarked identical prompts (	extit{"hello"} and 	extit{"Who are you?"}) on both deployment targets using the same quantized \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} model and configuration. Timing was captured end-to-end from user input to the final token, with streaming enabled in both runs. The GPU test was executed on an RTX 5080 16GB with cuBLAS acceleration, whereas the CPU baseline was collected on the same workstation with GPU offloading disabled.
+To quantify the benefit of the dedicated GPU pipeline, we benchmarked identical prompts (\textit{"hello"} and \textit{"Who are you?"}) on both deployment targets using the same quantized \texttt{Llama-3.2-3B-Instruct-Q4\_K\_M.gguf} model and configuration. Timing was captured end-to-end from user input to the final token, with streaming enabled in both runs. The GPU test was executed on an RTX 5080 16GB with cuBLAS acceleration, whereas the CPU baseline was collected on the same workstation with GPU offloading disabled.
 % 为量化 GPU 管线带来的收益，我们在 CPU 与 GPU 上使用相同提示词和同一量化模型进行基准测试，记录从输入到生成完成的端到端耗时。
 
 \begin{table}[H]
@@ -508,23 +508,9 @@ Traditional LLMs employ sequential processing with linear pipeline: tokenization
 Traditional LLMs use single-task optimization with established language modeling objectives. MLLMs face complex multi-objective optimization, balancing learning across modalities. Applications expand from text-centric tasks (summarization, code generation) to cross-modal capabilities (visual question answering, image captioning, multimodal dialogue systems).
 
 
-\subsection{Solution Implementation}
-% 解决方案实现
+\subsection{Group Demonstration with LLaVA-1.5-13B}
 
-% 解决方案实现 - 针对挑战的具体解决方案
-% Solution implementation - Specific solutions to challenges
 
-[Placeholder for solution implementation content]
-% [解决方案实现内容占位符]
-
-\subsection{Code Documentation}
-% 代码文档
-
-% 代码文档 - 项目代码的文档化
-% Code documentation - Documentation of project code
-
-[Placeholder for code documentation content]
-% [代码文档内容占位符]
 
 \section{Results and Discussion}
 % 结果和讨论

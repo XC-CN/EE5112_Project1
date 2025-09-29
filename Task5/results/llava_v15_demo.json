@@ -1,0 +1,17 @@
+{
+  "model_id": "llava-hf/llava-interleave-qwen-0.5b-hf",
+  "device": "cpu",
+  "image_path": "data\\demo_scene.jpg",
+  "caption_prompt": "Provide a concise caption for this image.",
+  "caption_response": "A cat with orange fur and yellow eyes.",
+  "conversation": [
+    {
+      "user": "What activity are the cats engaged in?",
+      "assistant": "The cats are engaged in different activities, but they are all looking at the camera. One cat is looking directly at the camera, while the other two cats are looking at something in the distance."
+    },
+    {
+      "user": "Mention two details about their surroundings.",
+      "assistant": "The cats are in a room with a red carpet, which suggests that they might be indoors. The room has a tiled floor, and there is a red object in the background that could be a carpet or a piece of furniture."
+    }
+  ]
+}
