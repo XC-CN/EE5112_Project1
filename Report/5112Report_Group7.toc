@@ -6,9 +6,9 @@
 \contentsline {section}{\numberline {4}Task 2: Develop Local Dialogue Systems by Using Open-Source LLMs}{5}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Literature Review on Different Categories of LLMs}{5}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Local LLM Platform Implementation}{6}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Challenges with Llama 3.1 8B Deployment}{7}{subsubsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.3}Performance Comparison: CPU vs GPU Deployment}{7}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Comparation of Different Pretrained Models}{8}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Challenges in Deployment}{8}{subsection.4.5}%
 \contentsline {section}{\numberline {5}Task 3: LLM Performance Evaluation}{8}{section.5}%
 \contentsline {section}{\numberline {6}Task 4: GUI for Local LLM}{9}{section.6}%
 \contentsline {section}{\numberline {7}Task 5: Exploring Multimodal Large Language Models (MLLMs)}{9}{section.7}%
