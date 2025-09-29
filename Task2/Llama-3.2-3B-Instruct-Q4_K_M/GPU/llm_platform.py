@@ -4,12 +4,10 @@
 from __future__ import annotations
 
 import os
+import sys
 import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
-
-from llama_cpp import Llama
-
 
 class LLMPlatform:
     """Local LLM platform with GPU-first defaults."""
@@ -23,7 +21,7 @@ class LLMPlatform:
         self.workspace_root = Path(workspace_root).resolve() if workspace_root else Path(__file__).resolve().parent
 
         self.model_path = self._resolve_model_path(self.model_config.get("model_path"))
-        self.llm: Optional[Llama] = None
+        self.llm: Optional[Any] = None
         self.conversation_history: List[Dict[str, str]] = []
 
     # ------------------------------------------------------------------
@@ -79,10 +77,41 @@ class LLMPlatform:
 
         if self.hardware_config.get("force_gpu_env", True):
             os.environ.setdefault("LLAMA_CUBLAS", "1")
+            self._ensure_cuda_runtime_on_path()
 
         main_gpu = self.hardware_config.get("main_gpu")
         if main_gpu is not None and "CUDA_VISIBLE_DEVICES" not in os.environ:
             os.environ["CUDA_VISIBLE_DEVICES"] = str(main_gpu)
+
+    def _ensure_cuda_runtime_on_path(self) -> None:
+        """Augment PATH so llama.cpp can locate CUDA/cuBLAS dlls."""
+
+        env_root = Path(sys.prefix)
+        site_packages = env_root / "Lib" / "site-packages"
+
+        candidate_dirs = [
+            site_packages / "nvidia" / "cublas" / "bin",
+            site_packages / "nvidia" / "cuda_runtime" / "bin",
+            site_packages / "nvidia" / "cudnn" / "bin",
+            env_root / "Library" / "bin",
+        ]
+
+        path_entries = os.environ.get("PATH", "").split(os.pathsep)
+        updated = False
+
+        for candidate in candidate_dirs:
+            if not candidate:
+                continue
+            if not candidate.exists():
+                continue
+            candidate_str = str(candidate)
+            if candidate_str in path_entries:
+                continue
+            path_entries.insert(0, candidate_str)
+            updated = True
+
+        if updated:
+            os.environ["PATH"] = os.pathsep.join(path_entries)
 
     def _build_llama_kwargs(self) -> Dict[str, Any]:
         kwargs: Dict[str, Any] = {
@@ -118,6 +147,17 @@ class LLMPlatform:
 
         return kwargs
 
+    def _import_llama_class(self):
+        try:
+            from llama_cpp import Llama as LlamaClass  # type: ignore
+
+            return LlamaClass
+        except ModuleNotFoundError as exc:
+            raise RuntimeError(
+                "llama_cpp is not installed. Install a GPU-enabled wheel, e.g. "
+                "`pip install --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121 llama-cpp-python==0.2.86`."
+            ) from exc
+
     # ------------------------------------------------------------------
     # Model lifecycle
     # ------------------------------------------------------------------
@@ -133,12 +173,13 @@ class LLMPlatform:
 
         try:
             llama_kwargs = self._build_llama_kwargs()
+            LlamaClass = self._import_llama_class()
 
             print(f"[INFO] Loading model from {llama_kwargs['model_path']}")
             print("[INFO]  GPU acceleration enabled" if self.hardware_config.get("gpu_enabled", True) else "[INFO]  Running on CPU")
 
             start = time.perf_counter()
-            self.llm = Llama(**llama_kwargs)
+            self.llm = LlamaClass(**llama_kwargs)
             elapsed = time.perf_counter() - start
             print(f"[OK] Model ready in {elapsed:.2f}s")
             return True
@@ -155,7 +196,7 @@ class LLMPlatform:
                 "n_gpu_layers": int(self.hardware_config.get("n_gpu_layers", -1 if self.hardware_config.get("gpu_enabled", True) else 0)),
             }
             try:
-                self.llm = Llama(**minimal_kwargs)
+                self.llm = LlamaClass(**minimal_kwargs)
                 print("[OK] Model ready with fallback parameters.")
                 return True
             except Exception as inner_exc:
