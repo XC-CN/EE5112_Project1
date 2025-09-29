@@ -34,3 +34,17 @@ JSON 中记录了提示词、模型回复以及运行设备（`device: "cuda"`�
 - 目前必须使用支持 SM 120 的 PyTorch Nightly (Cu128)；否则会出现 “no kernel image” 报错。
 - 若想在 CPU 上运行，可将 `scripts/run_llava_inference.py` 中的 `DEVICE = "cuda"` 改回 `"cpu"`。
 - 可替换图片或提示词以扩展演示，但注意重跑脚本以更新 JSON。
+
+## 5. PowerShell 多轮对话脚本
+
+Windows 下可直接执行：
+
+    .\run_llava_chat.ps1
+
+脚本会列出 `data/` 目录中的图像并提示选择，随后进入命令行对话模式（输入 `exit` / `quit` 结束）。
+
+若已准备好图片路径，也可以：
+
+    .\run_llava_chat.ps1 -Image .\data\demo_scene.jpg -Save
+
+`-Save` 参数会把此次对话记录保存到 `results/llava_chat_*.json`。
