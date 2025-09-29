@@ -1,0 +1,165 @@
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from datasets import load_dataset
+import random
+import pandas as pd
+import numpy as np
+import time
+from tqdm import tqdm
+
+# -----------------------------
+# 配置
+# -----------------------------
+MODEL_NAME = "nomic-ai/gpt4all-j"
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+SEED = 372
+BATCH_SIZE = 4
+SAMPLE_SIZE = 500
+
+torch.manual_seed(SEED)
+np.random.seed(SEED)
+random.seed(SEED)
+
+
+# -----------------------------
+# 加载模型与 tokenizer
+# -----------------------------
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+tokenizer.padding_side = "left"
+
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_NAME,
+    device_map="auto",
+    dtype=torch.float16
+)
+model.eval()
+
+# -----------------------------
+# 推理函数
+# -----------------------------
+def batch_generate(prompts, max_new_tokens):
+    inputs = tokenizer(prompts, return_tensors="pt", padding=True, truncation=True).to(DEVICE)
+    with torch.inference_mode():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=max_new_tokens,
+            do_sample=True,  # 贪婪解码
+            temperature=0.7,
+            pad_token_id=tokenizer.pad_token_id
+        )
+    responses = []
+    for output, input_ids in zip(outputs, inputs['input_ids']):
+        generated_ids = output[len(input_ids):]
+        responses.append(tokenizer.decode(generated_ids, skip_special_tokens=True))
+    return responses
+
+# -----------------------------
+# 数据集配置
+# -----------------------------
+DATASETS = {
+    "google/boolq": {"max_new_tokens": 10},
+    "piqa": {"max_new_tokens": 50},
+    "hellaswag": {"max_new_tokens": 50},
+    "winogrande": {"max_new_tokens": 50}
+}
+
+# -----------------------------
+# 评估
+# -----------------------------
+results = []
+
+for dataset_name, config in DATASETS.items():
+    print(f"\nProcessing dataset: {dataset_name}")
+    dataset = load_dataset(dataset_name, split="validation")
+    
+    # 随机抽样
+    indices = np.random.choice(len(dataset), SAMPLE_SIZE, replace=False)
+    sampled_data = [dataset[i] for i in indices]
+    
+    prompts = []
+    references = []
+    
+    # 构建 prompt 和 reference
+    for data in sampled_data:
+        if dataset_name == "google/boolq":
+            prompt = f"Passage: {data['passage']}\nQuestion: {data['question']}\nAnswer (True/False):"
+            # prompt = (
+            #     f"Passage: {data['passage']}\n"
+            #     f"Question: {data['question']}\n"
+            #     f"Answer only with 'True' or 'False' (no extra text):"
+            # )
+            prompts.append(prompt)
+            references.append(data['answer'])
+        elif dataset_name == "piqa":
+            prompts.append(f"Goal: {data['goal']}\nOption 1: {data['sol1']}\nOption 2: {data['sol2']}")
+            references.append(data['label'])
+        elif dataset_name == "hellaswag":
+            options = [data[f"ending{i}"] for i in range(4)]
+            prompt = f"{data['ctx']}\nOptions:\n" + "\n".join(f"{i}: {opt}" for i,opt in enumerate(options))
+            prompts.append(prompt)
+            references.append(data['ending_idx'])
+        elif dataset_name == "winogrande":
+            prompt = f"Sentence: {data['sentence']}\nOptions: {data['option1']}, {data['option2']}\nWhich is correct?"
+            prompts.append(prompt)
+            references.append(data['answer'])
+    
+    # 计时开始
+    start_time = time.time()
+    
+    # 分批生成
+    all_preds = []
+    correct = 0
+    
+    for i in tqdm(range(0, len(prompts), BATCH_SIZE), desc=f"Generating {dataset_name}", unit="batch"):
+        batch_prompts = prompts[i:i+BATCH_SIZE]
+        batch_refs = references[i:i+BATCH_SIZE]
+        batch_samples = sampled_data[i:i+BATCH_SIZE]
+        
+        responses = batch_generate(batch_prompts, max_new_tokens=config["max_new_tokens"])
+        all_preds.extend(responses)
+        
+        # 实时计算累计正确数
+        for pred, ref, data_sample in zip(responses, batch_refs, batch_samples):
+            pred_norm = pred.lower().strip()
+            
+            if dataset_name == "google/boolq":
+                is_false = any(word in pred_norm for word in ["false", "no", "incorrect", "0","not","alse"])
+                if is_false:
+                    is_true = False
+                else:
+                    is_true = True
+                print(pred_norm)
+                if (is_true and ref) or (is_false and not ref):
+                    correct += 1
+            elif dataset_name == "piqa":
+                if str(ref) in pred:
+                    correct += 1
+            elif dataset_name == "hellaswag":
+                if str(ref) in pred:
+                    correct += 1
+            elif dataset_name == "winogrande":
+                option_text = data_sample['option1'] if ref==0 else data_sample['option2']
+                if str(ref) in pred or option_text in pred:
+                    correct += 1
+        
+        # 实时显示进度和正确率
+        processed = min(i + BATCH_SIZE, SAMPLE_SIZE)
+        accuracy = correct / processed * 100
+        tqdm.write(f"Processed {processed}/{SAMPLE_SIZE} | Current Accuracy: {accuracy:.2f}%")
+    
+    elapsed_time = time.time() - start_time
+    
+    # 最终准确率
+    final_accuracy = correct / SAMPLE_SIZE * 100
+    results.append({
+        "dataset": dataset_name,
+        "accuracy (%)": f"{final_accuracy:.2f}",
+        "inference_time(s)": f"{elapsed_time:.2f}"
+    })
+
+# 输出表格
+df = pd.DataFrame(results)
+print("\nEvaluation Results:")
+print(df)
