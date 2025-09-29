@@ -256,8 +256,61 @@ Figure~\ref{fig:llama_cpu_chat} shows the slower CPU baseline, while Figure~\ref
 
 
 
-\subsection{Comparation of Different Pretrained Models}
+\subsection{Comparison of Different Pretrained Models}
 % 不同预训练模型的比较
+
+To evaluate the reasoning capabilities and response quality of different model variants, we conducted a comparative analysis between Llama-3.1-8B-Instruct and Llama-3.2-3B-Instruct using a logical reasoning task. The test involved a constraint satisfaction problem requiring systematic analysis and deductive reasoning.
+% 为评估不同模型变体的推理能力和响应质量，我们使用逻辑推理任务对 Llama-3.1-8B-Instruct 和 Llama-3.2-3B-Instruct 进行了比较分析。
+
+\subsubsection{Logical Reasoning Test}
+% 逻辑推理测试
+
+The test prompt presented a constraint satisfaction problem: \textit{"Logic reasoning: A not 1st, C not last, B not 1st or last, what is ranking?"} This requires the model to systematically analyze multiple constraints and derive a valid solution through logical deduction.
+% 测试提示提出了一个约束满足问题，要求模型系统性地分析多个约束条件并通过逻辑推演得出有效解。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{Figures/3.1-8B ans.png}
+    \caption{Llama-3.1-8B-Instruct response showing systematic logical analysis}
+    \label{fig:llama31_reasoning}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{Figures/3.2-3B ans.png}
+    \caption{Llama-3.2-3B-Instruct response demonstrating structured problem-solving}
+    \label{fig:llama32_reasoning}
+\end{figure}
+
+\subsubsection{Performance Analysis}
+% 性能分析
+
+\textbf{Llama-3.1-8B-Instruct} demonstrated comprehensive analytical capabilities with effective self-correction mechanisms. The model initially proposed an incorrect solution (A-2nd, B-3rd, C-1st) but recognized through systematic verification that this violated the constraints. It proceeded to re-examine the problem methodically, ultimately arriving at the correct ranking: A-3rd, B-2nd, C-1st. The response time was 3.64 seconds, reflecting the thorough analytical process including error detection and correction.
+% Llama-3.1-8B-Instruct 展现了具有有效自我纠错机制的全面分析能力，响应时间为3.64秒，体现了包括错误检测和纠正在内的深入分析过程。
+
+\textbf{Llama-3.2-3B-Instruct}, while demonstrating systematic constraint analysis, appears to have misinterpreted the problem scope. The model analyzed the constraints correctly but assumed a 5-position ranking system rather than recognizing this as a 3-element arrangement problem. Although its constraint analysis method was sound (identifying that A and C must occupy positions 2-5, and B must be in the middle), this fundamental misunderstanding of the problem structure led to an incomplete solution. The response time was 1.18 seconds.
+% Llama-3.2-3B-Instruct 虽然展现了系统性的约束分析，但似乎误解了问题范围，假设了5位排名系统而非3元素排列问题，导致解答不完整。
+
+\begin{table}[H]
+\centering
+\caption{Model comparison on logical reasoning task}
+% 逻辑推理任务的模型比较
+\label{tab:model_reasoning_comparison}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Response Time} & \textbf{Reasoning Style} & \textbf{Solution Quality} \\
+% 模型 & 响应时间 & 推理风格 & 解答质量
+\hline
+Llama-3.1-8B & 3.64s & Self-correction & Complete \& Correct \\
+% 自我纠错 & 完整正确
+Llama-3.2-3B & 1.18s & Direct analysis & Incomplete \\
+% 直接分析 & 不完整
+\hline
+\end{tabular}
+\end{table}
+
+This comparison reveals important insights about model capabilities: while the 3B model demonstrated faster processing and sound constraint analysis methodology, it failed to correctly interpret the problem scope. The 8B model, despite requiring more time, exhibited superior problem comprehension and self-correction abilities, ultimately delivering the complete and correct solution. This suggests that model size can significantly impact not just reasoning depth, but also problem interpretation accuracy in complex logical tasks.
+% 这个比较揭示了模型能力的重要见解：虽然3B模型展现了更快的处理速度和合理的约束分析方法，但未能正确理解问题范围。8B模型尽管需要更多时间，但表现出更优的问题理解和自我纠错能力，最终提供了完整正确的解答。
 
 
 
