@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.9.25)  29 SEP 2025 15:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.9.25)  29 SEP 2025 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1040,7 +1040,7 @@ Overfull \hbox (46.37502pt too wide) in paragraph at lines 180--182
 \OT1/minntx/m/n/12 We de-ploy a com-pact lo-cal di-a-logue stack around the quan-tized \OT1/ntxtt/m/n/12 Llama-3.2-3B-Instruct-Q4[]K[]M.gguf
  []
 
-<Figures/llama对话.png, id=212, 863.3684pt x 505.02965pt>
+<Figures/llama对话.png, id=232, 863.3684pt x 505.02965pt>
 File: Figures/llama对话.png Graphic file (type png)
 <use Figures/llama对话.png>
 Package pdftex.def Info: Figures/llama对话.png  used on input line 197.
@@ -1048,7 +1048,7 @@ Package pdftex.def Info: Figures/llama对话.png  used on input line 197.
 
 
 [6]
-<Figures/llamaGPU.png, id=223, 1004.89714pt x 618.59679pt>
+<Figures/llamaGPU.png, id=243, 1004.89714pt x 618.59679pt>
 File: Figures/llamaGPU.png Graphic file (type png)
 <use Figures/llamaGPU.png>
 Package pdftex.def Info: Figures/llamaGPU.png  used on input line 236.
@@ -1060,35 +1060,51 @@ Package pdftex.def Info: Figures/llamaGPU.png  used on input line 236.
 [8 <./Figures/llamaGPU.png>]
 
 [9]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 390.
-
 
 [10]
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 331.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 331.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 331.
 
-[11] (5112Report_Group7.aux)
+
+[11]
+
+[12]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 12.0pt on input line 453.
+
+
+[13]
+
+[14] (5112Report_Group7.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `5112Report_Group7.out' has not changed.
-(rerunfilecheck)             Checksum: 63838141CA87E9E5FC9DF24ECBFB001A;6089.
+(rerunfilecheck)             Checksum: D49771D918D3DC2EFAF64C62984A97A2;7049.
 Package logreq Info: Writing requests to '5112Report_Group7.run.xml'.
 \openout1 = `5112Report_Group7.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 27177 strings out of 469959
- 513756 string characters out of 5479910
- 1277513 words of memory out of 5000000
- 53573 multiletter control sequences out of 15000+600000
- 667030 words of font info for 124 fonts, out of 8000000 for 9000
+ 27192 strings out of 469959
+ 513977 string characters out of 5479910
+ 1277516 words of memory out of 5000000
+ 53580 multiletter control sequences out of 15000+600000
+ 667367 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,8n,131p,771b,2240s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<D:/Program Files/MiKTeX/fonts/type1/public/tex-gyre/qtmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/txfonts/txtt.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
-Output written on 5112Report_Group7.pdf (11 pages, 442432 bytes).
+ 83i,8n,131p,771b,1381s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\XC\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><D:/Program Files/MiKTeX/fonts/type1/public/tex-gyre/qtmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/txfonts/txtt.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><D:/Program Files/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
+Output written on 5112Report_Group7.pdf (14 pages, 453419 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
- 267 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 330 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
+ 299 words of extra memory for PDF output out of 10000 (max. 10000000)
 

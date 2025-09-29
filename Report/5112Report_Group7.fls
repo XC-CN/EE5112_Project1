@@ -382,6 +382,7 @@ INPUT .\Figures\llamaGPU.png
 INPUT .\Figures\llamaGPU.png
 INPUT .\Figures\llamaGPU.png
 INPUT .\Figures\llamaGPU.png
+INPUT D:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm1200.tfm
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\ntx-Italic-tlf-ot1.tfm
 INPUT D:\Program Files\MiKTeX\fonts\vf\public\newtx\ntx-Italic-tlf-ot1.vf
 INPUT D:\Program Files\MiKTeX\fonts\tfm\public\newtx\NewTXMI.tfm
@@ -391,6 +392,8 @@ INPUT .\5112Report_Group7.out
 INPUT .\5112Report_Group7.out
 INPUT 5112Report_Group7.run.xml
 OUTPUT 5112Report_Group7.run.xml
+INPUT C:\Users\XC\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
+INPUT C:\Users\XC\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\tex-gyre\qtmr.pfb
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\tex-gyre\qtmr.pfb
 INPUT D:\Program Files\MiKTeX\fonts\type1\public\txfonts\txtt.pfb

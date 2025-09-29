@@ -272,8 +272,71 @@ Given the strict memory ceiling and unstable experience, we migrated the local d
 \section{Task 5: Exploring Multimodal Large Language Models (MLLMs)}
 % 任务5：探索多模态大型语言模型（MLLMs）
 
-[Placeholder for Task 5 content]
-% [任务5内容占位符]
+Recently, multimodal large language models (MLLMs), such as GPT-4o and similar architectures, have demonstrated exceptional performance across a broad spectrum of tasks. These downstream tasks span interleaved conversations that integrate text, speech, and visuals, sophisticated image generation that understands context, and image question answering (IQA) capabilities. The advent of MLLMs marks a significant step forward in artificial intelligence, bridging multiple modalities to provide more interactive, context-aware outputs.
+% 近年来，多模态大型语言模型（MLLMs），如GPT-4o等类似架构，在广泛的任务领域中展现了卓越的性能。这些下游任务涵盖了文本、语音和视觉的交错对话，理解上下文的复杂图像生成，以及图像问答（IQA）能力。MLLM的出现标志着人工智能的重大进步，连接多种模态以提供更具交互性、上下文感知的输出。
+
+In this task, students are required to explore and understand the fundamentals of MLLMs, delving into their architecture, training processes, and practical applications. LLaVA (Large Language and Vision Assistant) serves as a practical example for this exploration. As outlined on their project page (https://llava-vl.github.io), LLaVA exemplifies how multimodal systems can be fine-tuned to enhance visual-language understanding, particularly in fields like image captioning, visual dialogue, and question answering.
+% 在此任务中，学生需要探索和理解MLLM的基础知识，深入研究其架构、训练过程和实际应用。LLaVA（大型语言和视觉助手）作为此探索的实际示例。如其项目页面所述，LLaVA展示了如何微调多模态系统以增强视觉语言理解，特别是在图像字幕、视觉对话和问答等领域。
+
+\subsection{Individual Responses: Differences between MLLMs and Traditional LLMs}
+% 个人回答：MLLM与传统LLM的差异
+
+\subsubsection{Response by Niu Mu}
+% 牛牧的回答
+
+\textbf{Architectural and Processing Differences}
+
+The fundamental distinction between MLLMs and traditional LLMs lies in their input processing capabilities. Traditional LLMs like GPT-3 and BERT are designed exclusively for text-based inputs, processing sequential token embeddings through transformer architectures and excelling at natural language tasks within the textual domain.
+
+MLLMs integrate multiple modalities—vision, text, and audio—into a unified framework. The architecture consists of: (1) modality-specific encoders (e.g., Vision Transformer for images), (2) cross-modal alignment mechanisms, and (3) language model decoders. This enables understanding and generation across different modalities simultaneously.
+
+\textbf{Training and Data Requirements}
+
+Traditional LLMs use self-supervised learning on large text corpora with objectives like masked language modeling or next-token prediction. Training data consists entirely of textual sequences, limiting understanding to linguistic patterns.
+
+MLLMs require complex multi-stage training: (1) pre-training on multimodal datasets for cross-modal representations, (2) instruction tuning with multimodal data, and (3) task-specific fine-tuning. This involves image-text pairs, video-text combinations, and cross-modal associations, significantly increasing computational requirements and data collection challenges.
+
+\textbf{Applications and Trade-offs}
+
+Traditional LLMs excel in text-centric applications like content generation, translation, and code completion but cannot process visual information, limiting real-world applicability.
+
+MLLMs expand capabilities to visual question answering, image captioning, multimodal dialogue systems, and cross-modal content creation. However, this versatility comes with increased model complexity, computational overhead, and potential performance trade-offs in pure text tasks compared to specialized text-only models.
+
+\subsubsection{Response by Wu Zining}
+% 吴子宁的回答
+
+\textbf{Architectural Evolution: Single to Multiple Modalities}
+
+The evolution from traditional LLMs to MLLMs represents a paradigm shift from single-modality to integrated multimodal understanding. Traditional LLMs operate within a constrained textual universe, processing only tokenized sequences and remaining fundamentally limited to symbolic language representation. Models like GPT series excel at linguistic patterns but cannot directly understand non-textual information.
+
+MLLMs transcend this limitation by incorporating vision encoders, audio processors, and cross-modal components. A typical MLLM architecture features specialized encoders (e.g., Vision Transformer for images) that convert multimodal inputs into feature representations, followed by projection layers mapping these features into the language model's embedding space. This enables understanding of relationships between visual content and textual descriptions.
+
+\textbf{Processing and Training Differences}
+
+Traditional LLMs employ straightforward tokenization and next-token prediction, learning language patterns through self-supervised objectives on text corpora. Their training data is primarily textual from web crawls, books, and articles.
+
+MLLMs require heterogeneous representation learning, processing different modalities through specialized encoders before fusion in shared representational space. Training involves multiple stages: (1) vision-language pre-training on image-text datasets, (2) multimodal instruction tuning, and (3) task-specific fine-tuning. This complexity significantly increases computational costs and requires specialized expertise in handling multiple data modalities and ensuring proper cross-modal alignment.
+
+\subsubsection{Response by Zhao Jinqiu}
+% 赵金秋的回答
+
+\textbf{Processing Philosophy: Unimodal vs. Multimodal Intelligence}
+
+The distinction between traditional LLMs and MLLMs can be understood through cognitive processing philosophy. Traditional LLMs embody a text-centric paradigm where all capabilities are mediated through linguistic representations. Models like GPT-3.5 and Claude process information exclusively through tokenized text sequences, excelling in language comprehension within textual confines.
+
+MLLMs represent a shift toward embodied intelligence, integrating multiple sensory modalities similar to human cognitive processes. Models like GPT-4V and LLaVA simultaneously process text, images, and audio, enabling richer contextual understanding and more natural human-computer interaction.
+
+\textbf{Technical Architecture: Sequential vs. Parallel Processing}
+
+Traditional LLMs employ sequential processing where tokens flow through self-attention layers and feed-forward networks. The linear pipeline follows: tokenization → embedding → transformer layers → output generation, optimized for discrete token sequences.
+
+MLLMs implement parallel modality processing requiring sophisticated fusion mechanisms: (1) modality-specific encoders, (2) cross-modal attention mechanisms, (3) alignment modules mapping features into shared representational space, and (4) unified decoders generating multimodal outputs. This enables simultaneous cross-referencing of multiple information sources.
+
+\textbf{Learning and Application Differences}
+
+Traditional LLMs use well-established single-task optimization with language modeling objectives like next-token prediction. Evaluation focuses on language-specific metrics such as perplexity and BLEU scores.
+
+MLLMs face complex multi-objective optimization, balancing learning across modalities while avoiding negative interference. Training requires curriculum learning and careful loss function balancing. Applications expand from text-centric tasks (summarization, code generation) to cross-modal capabilities (visual question answering, image captioning, multimodal dialogue systems), enabling accessibility tools, educational systems, and scientific analysis requiring integration of multiple information sources.
 
 
 \subsection{Solution Implementation}
